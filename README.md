@@ -1,3 +1,4 @@
 # PewCare
 
 ### Integrantes
+Valentina Caicedo
