@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">PawCare</string>
+    <string name="welcome_text">Bienvenid@ a Pawcare</string>
+    <string name="register">Registrarse</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="or">or</string>
+    <string name="username_hint">Usuario</string>
+    <string name="password_hint">Contraseña</string>
 </resources>
