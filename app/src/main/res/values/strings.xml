@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">PawCare</string>
     <string name="welcome_text">Bienvenid@ a Pawcare</string>
     <string name="register">Registrarse</string>
     <string name="login">Iniciar sesión</string>

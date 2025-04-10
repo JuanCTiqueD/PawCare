@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.225"
@@ -38,6 +39,7 @@
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:hint="Nombre usuario"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.225"
@@ -46,10 +48,11 @@
         app:layout_constraintVertical_bias="0.177" />
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/aun"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:hint="Cuidador/dueño"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.225"
@@ -58,10 +61,11 @@
         app:layout_constraintVertical_bias="0.272" />
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etEmail"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:hint="Correo"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.225"
@@ -70,7 +74,7 @@
         app:layout_constraintVertical_bias="0.37" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnRegister"
         android:layout_width="272dp"
         android:layout_height="52dp"
         android:backgroundTint="#AA3FEC"
@@ -83,9 +87,10 @@
         app:layout_constraintVertical_bias="0.883" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switchUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
         android:text="¿Soy usuario?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,9 +100,10 @@
         app:layout_constraintVertical_bias="0.549" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/switchCaregiver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
         android:text="¿Soy cuidador?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
