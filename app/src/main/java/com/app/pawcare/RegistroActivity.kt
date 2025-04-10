@@ -1,6 +1,7 @@
 package com.app.pawcare
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -56,6 +57,8 @@ class RegistroActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            Log.d("FIREBASE", "Iniciando creación de usuario con email: $email")
+
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -67,18 +70,24 @@ class RegistroActivity : AppCompatActivity() {
                             "role" to role
                         )
 
+                        Log.d("FIREBASE", "Usuario creado en Auth con UID: ${user?.uid}")
+                        Log.d("FIREBASE", "Guardando usuario en Firestore...")
+
                         user?.let {
                             db.collection("users")
                                 .document(it.uid)
                                 .set(userData)
                                 .addOnSuccessListener {
+                                    Log.d("FIREBASE", "Usuario guardado con éxito en Firestore")
                                     Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
                                 }
                                 .addOnFailureListener { e ->
+                                    Log.e("FIREBASE", "Error al guardar en Firestore", e)
                                     Toast.makeText(this, "Error al guardar datos: ${e.message}", Toast.LENGTH_SHORT).show()
                                 }
                         }
                     } else {
+                        Log.e("FIREBASE", "Error en el registro: ${task.exception?.message}", task.exception)
                         Toast.makeText(this, "Error en el registro: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
