@@ -13,6 +13,24 @@
         android:theme="@style/Theme.PawCare"
         tools:targetApi="31">
         <activity
+            android:name=".ElegirmascotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SolicitudPaseadoresActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PeluqueriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaseadoresActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EscuelaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlojamientoActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistroActivity"
             android:exported="false" />
         <activity
