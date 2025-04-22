@@ -1,4 +1,6 @@
 <resources>
+
+    // Layout registro
     <string name="app_name">PawCare</string>
     <string name="welcome_text">Bienvenid@ a Pawcare</string>
     <string name="register">Registrarse</string>
@@ -6,4 +8,16 @@
     <string name="or">or</string>
     <string name="username_hint">Usuario</string>
     <string name="password_hint">Contraseña</string>
+
+
+    // Layout Seleccion mascota
+    <string name="selection">Selecciona tu mascota</string>
+    <string name="dog">Perro</string>
+    <string name="cat">Gato</string>
+
+    // Layout Perfil mascota
+    <string name="data">Datos</string>
+    <string name="add_image">Agregar imagen</string>
+    <string name="save">Guardar datos</string>
+
 </resources>
