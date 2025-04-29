@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -18,6 +19,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Configuración para modo oscuro o claro según la preferencia del sistema
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
         auth = Firebase.auth
 
@@ -41,9 +45,7 @@ class MainActivity : AppCompatActivity() {
                         val user = auth.currentUser
                         Log.d("LOGIN", "Inicio de sesión exitoso: ${user?.uid}")
                         Toast.makeText(this, "Bienvenido/a ${user?.email}", Toast.LENGTH_SHORT).show()
-
-                        // Puedes redirigir a una pantalla de inicio aquí
-                        // startActivity(Intent(this, HomeActivity::class.java))
+                        startActivity(Intent(this, ActivityInicio::class.java))
                     } else {
                         Log.e("LOGIN", "Error al iniciar sesión", task.exception)
                         Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()

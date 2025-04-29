@@ -1,5 +1,6 @@
 package com.app.pawcare
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -80,6 +81,16 @@ class RegistroActivity : AppCompatActivity() {
                                 .addOnSuccessListener {
                                     Log.d("FIREBASE", "Usuario guardado con éxito en Firestore")
                                     Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+
+                                    // Aquí redireccionamos según el rol
+                                    if (isCaregiver) {
+                                        val intent = Intent(this, CuidadorActivity::class.java)
+                                        startActivity(intent)
+                                    } else if (isUser) {
+                                        val intent = Intent(this, ActivityInicio::class.java)
+                                        startActivity(intent)
+                                    }
+                                    finish() // Cerramos esta actividad para que no vuelva atrás
                                 }
                                 .addOnFailureListener { e ->
                                     Log.e("FIREBASE", "Error al guardar en Firestore", e)

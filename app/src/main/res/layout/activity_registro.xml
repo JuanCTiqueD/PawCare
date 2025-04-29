@@ -32,7 +32,7 @@
         app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintVertical_bias="0.363" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -48,19 +48,6 @@
         app:layout_constraintVertical_bias="0.177" />
 
     <EditText
-        android:id="@+id/aun"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:hint="Cuidador/dueño"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.272" />
-
-    <EditText
         android:id="@+id/etEmail"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
@@ -71,7 +58,7 @@
         app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.27" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -97,7 +84,7 @@
         app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.549" />
+        app:layout_constraintVertical_bias="0.465" />
 
     <Switch
         android:id="@+id/switchCaregiver"
@@ -110,7 +97,7 @@
         app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.67" />
+        app:layout_constraintVertical_bias="0.609" />
 
     <TextView
         android:id="@+id/textView4"
@@ -122,7 +109,7 @@
         app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.608" />
+        app:layout_constraintVertical_bias="0.529" />
 
     <TextView
         android:id="@+id/textView5"
@@ -134,7 +121,7 @@
         app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintVertical_bias="0.674" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
