@@ -62,12 +62,12 @@
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cat_black_white" />
+                android:src="@drawable/manchas" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Manchas "
+                android:text="Manchas"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -84,7 +84,7 @@
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/dog_brown" />
+                android:src="@drawable/cachorro" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/dog_white_brown" />
+                android:src="@drawable/gato2" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -128,7 +128,7 @@
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cat_brown_black" />
+                android:src="@drawable/doberman_" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -226,10 +226,7 @@
     </HorizontalScrollView>
 
      />
-
 </LinearLayout>
         </ScrollView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
