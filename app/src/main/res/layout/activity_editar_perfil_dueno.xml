@@ -77,7 +77,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rounded_text"
-        android:hint="Ingresa un número"
+        android:hint="Número de contacto"
         android:padding="10dp"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
