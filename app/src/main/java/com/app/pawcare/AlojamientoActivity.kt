@@ -32,5 +32,12 @@ class AlojamientoActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        //Botón reservar (Image view)
+        val btnReservar = findViewById<ImageView>(R.id.btn_reservar)
+        btnReservar.setOnClickListener {
+            val intent = Intent(this, SolicitudAlojamientoActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
