@@ -16,6 +16,9 @@
             android:name=".EditarMascota_Activity"
             android:exported="false" />
         <activity
+            android:name=".perfilCuidadorActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditarPerfilDueno"
             android:exported="false" />
         <activity
