@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelecionarMascota_Activity">
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="412dp"
+        android:layout_height="178dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/diseno_morado" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="107dp"
+        android:layout_height="84dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134"
+        app:srcCompat="@drawable/pawcare_icono" />
+
+    <TextView
+        android:id="@+id/tv_title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar mascota"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.072"
+        app:srcCompat="?attr/homeAsUpIndicator" />
+
+    <ImageView
+        android:id="@+id/btnhuella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.974"
+        app:srcCompat="@drawable/huella" />
+
+    <ImageView
+        android:id="@+id/btnperfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="@drawable/perfil" />
+
+    <ImageView
+        android:id="@+id/btnhome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975"
+        app:srcCompat="@drawable/casa" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="158dp"
+        android:layout_height="137dp"
+        app:srcCompat="@drawable/gato"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="469dp" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="126dp"
+        android:layout_height="122dp"
+        app:srcCompat="@drawable/perro"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="251dp" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="55dp"
+        android:layout_height="47dp"
+        app:srcCompat="@drawable/flecha"
+        tools:layout_editor_absoluteX="261dp"
+        tools:layout_editor_absoluteY="318dp" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="55dp"
+        android:layout_height="47dp"
+        app:srcCompat="@drawable/flecha"
+        tools:layout_editor_absoluteX="90dp"
+        tools:layout_editor_absoluteY="532dp" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="357dp"
+        android:layout_height="206dp"
+        app:srcCompat="@drawable/recuadro"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="206dp" />
+
+    <ImageView
+        android:id="@+id/imageView23"
+        android:layout_width="375dp"
+        android:layout_height="208dp"
+        app:srcCompat="@drawable/recuadro"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="426dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
