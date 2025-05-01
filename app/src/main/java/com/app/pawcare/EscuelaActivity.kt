@@ -1,6 +1,8 @@
 package com.app.pawcare
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +17,20 @@ class EscuelaActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        // Botón de regresar (fuera del listener)
+        val btnRegresar = findViewById<ImageView>(R.id.btn_regresar2)
+        btnRegresar.setOnClickListener {
+            val intent = Intent(this, ActivityInicio::class.java)
+            startActivity(intent)
+            finish() // Opcional: evita que esta pantalla quede en el historial
+        }
+        // Botón de home (ImageView)
+        val btnHome = findViewById<ImageView>(R.id.btnhome2)
+        btnHome.setOnClickListener {
+            val intent = Intent(this, ActivityInicio::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
