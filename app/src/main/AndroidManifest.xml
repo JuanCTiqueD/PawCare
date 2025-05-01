@@ -13,6 +13,21 @@
         android:theme="@style/Theme.PawCare"
         tools:targetApi="31">
         <activity
+            android:name=".PerfilGato_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".PerfilPerro_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".SelecionarMascota_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".SeleccionMascota_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".SeleccionMascota"
+            android:exported="false" />
+        <activity
             android:name=".ElegirmascotaActivity"
             android:exported="false" />
         <activity
