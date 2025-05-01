@@ -39,9 +39,11 @@
         <activity
             android:name=".PeluqueriaActivity"
             android:exported="false" />
+
         <activity
             android:name=".PaseadoresActivity"
             android:exported="false" />
+
         <activity
             android:name=".EscuelaActivity"
             android:exported="false" />
@@ -52,8 +54,12 @@
             android:name=".RegistroActivity"
             android:exported="false" />
         <activity
+            android:name=".ActivityInicio"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
+        <activity android:name=".CuidadorActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
