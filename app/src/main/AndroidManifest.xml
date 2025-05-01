@@ -24,12 +24,7 @@
         <activity
             android:name=".SelecionarMascota_Activity"
             android:exported="false" />
-        <activity
-            android:name=".SeleccionMascota_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".SeleccionMascota"
-            android:exported="false" />
+
         <activity
             android:name=".ElegirmascotaActivity"
             android:exported="false" />
@@ -51,9 +46,7 @@
         <activity
             android:name=".RegistroActivity"
             android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
