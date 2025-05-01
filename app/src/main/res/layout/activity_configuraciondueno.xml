@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/btnEliminar"
-        android:layout_width="179dp"
-        android:layout_height="54dp"
+        android:layout_width="213dp"
+        android:layout_height="57dp"
         android:backgroundTint="#C64928"
         android:text="         Eliminar cuenta"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +89,7 @@
         app:layout_constraintVertical_bias="0.088" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/editarperfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Editar perfil"
