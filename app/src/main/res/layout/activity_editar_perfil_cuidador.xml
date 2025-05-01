@@ -24,7 +24,7 @@
         android:id="@+id/btnguardarcambios2"
         android:layout_width="179dp"
         android:layout_height="54dp"
-        android:backgroundTint="#AA3FEC"
+        android:backgroundTint="#6FAA3FEC"
         android:text="Guardar cambios"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"

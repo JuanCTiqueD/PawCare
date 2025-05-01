@@ -37,7 +37,11 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView27"
         app:layout_constraintVertical_bias="0.124">
 
-
+        <ImageView
+            android:id="@+id/imageView51"
+            android:layout_width="327dp"
+            android:layout_height="279dp"
+            app:srcCompat="@drawable/solicitud1" />
     </androidx.cardview.widget.CardView>
 
     <ImageView
