@@ -16,7 +16,7 @@
             android:name=".EditarPerfilDueno"
             android:exported="false" />
         <activity
-            android:name=".Configuraciondueno"
+            android:name=".Configuracion"
             android:exported="false" />
         <activity
             android:name=".SolicitudCuidadorAceptada_Activity"

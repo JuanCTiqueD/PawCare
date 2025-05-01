@@ -23,7 +23,7 @@ class PerfilDuenoActivity : AppCompatActivity() {
         // Navegación a Configuraciondueno
         val imgConfiguracion = findViewById<ImageView>(R.id.imgConfiguracion)
         imgConfiguracion.setOnClickListener {
-            val intent = Intent(this, Configuraciondueno::class.java)
+            val intent = Intent(this, Configuracion::class.java)
             startActivity(intent)
         }
 
