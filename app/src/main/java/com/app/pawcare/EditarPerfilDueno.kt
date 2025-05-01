@@ -1,5 +1,6 @@
 package com.app.pawcare
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
@@ -9,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class EditarPerfilDueno : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,5 +29,12 @@ class EditarPerfilDueno : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        // ✅ Botón agregar mascota
+        val btnAgregarm = findViewById<ImageView>(R.id.btnAgregarm)
+        btnAgregarm.setOnClickListener {
+            startActivity(Intent(this, SelecionarMascota_Activity::class.java))
+        }
+
     }
 }
