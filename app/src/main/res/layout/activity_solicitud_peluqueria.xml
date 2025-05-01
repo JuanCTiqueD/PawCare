@@ -10,14 +10,14 @@
 
     <View
         android:id="@+id/separator5"
-        android:layout_width="379dp"
+        android:layout_width="321dp"
         android:layout_height="1dp"
         android:background="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.206" />
+        app:layout_constraintVertical_bias="0.208" />
 
     <ImageView
         android:id="@+id/btnperfil12"
@@ -93,18 +93,18 @@ solicitud para peluquería? "
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.087"
+        app:layout_constraintVertical_bias="0.050"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <ImageView
         android:id="@+id/imageView26"
-        android:layout_width="248dp"
-        android:layout_height="236dp"
+        android:layout_width="230dp"
+        android:layout_height="218dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816"
+        app:layout_constraintVertical_bias="0.787"
         app:srcCompat="@drawable/solicitudpeluqueria" />
 </androidx.constraintlayout.widget.ConstraintLayout>

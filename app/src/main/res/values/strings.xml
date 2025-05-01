@@ -20,4 +20,15 @@
     <string name="add_image">Agregar imagen</string>
     <string name="save">Guardar datos</string>
 
+
+    // Layout Perrificado
+    <string name="perrificado_titulo">¡Perfil Perrificado!</string>
+    <string name="perrificado">El sello "Perfil Perrificado" 🐶
+        garantiza que un perfil ha sido verificado, tiene
+        certificaciones y cumple altos
+        estándares de calidad,
+        asegurando opciones
+        confiables y seguras.
+        ¡Busca el ícono y elige con confianza!\n✅🌟</string>
+
 </resources>
