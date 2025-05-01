@@ -21,7 +21,6 @@
 
     </RelativeLayout>
 
-
     <!-- Noticias -->
 
     <TextView
@@ -89,7 +88,7 @@
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cachorro" />
+                android:src="@drawable/cachorro"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -165,7 +164,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textNoticias">>
+        app:layout_constraintTop_toBottomOf="@id/textNoticias"
+        android:importantForAccessibility="no">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -234,5 +234,6 @@
 
         </LinearLayout>
     </HorizontalScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
