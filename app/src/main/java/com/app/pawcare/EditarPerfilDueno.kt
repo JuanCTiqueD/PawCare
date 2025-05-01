@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class PerfilDuenoActivity : AppCompatActivity() {
+class EditarPerfilDueno : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_perfil_dueno)
+        setContentView(R.layout.activity_editar_perfil_dueno)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -20,19 +20,12 @@ class PerfilDuenoActivity : AppCompatActivity() {
             insets
         }
 
-        // Navegación a Configuraciondueno
-        val imgConfiguracion = findViewById<ImageView>(R.id.imgConfiguracion)
-        imgConfiguracion.setOnClickListener {
+        // ✅ Botón para volver a Configuraciondueno
+        val btnBack = findViewById<ImageView>(R.id.imageView43)
+        btnBack.setOnClickListener {
             val intent = Intent(this, Configuraciondueno::class.java)
             startActivity(intent)
-        }
-
-        // ✅ Volver a ActivityInicio al presionar btnhome14
-        val btnHome = findViewById<ImageView>(R.id.btnhome14)
-        btnHome.setOnClickListener {
-            val intent = Intent(this, ActivityInicio::class.java)
-            startActivity(intent)
-            finish() // Opcional: cierra esta pantalla para que no quede en el historial
+            finish()
         }
     }
 }
