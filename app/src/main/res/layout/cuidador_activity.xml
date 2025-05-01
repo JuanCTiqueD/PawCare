@@ -146,7 +146,7 @@
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/gato2" />
+                    android:src="@drawable/gato2" />
 
             <TextView
                 android:layout_width="wrap_content"
