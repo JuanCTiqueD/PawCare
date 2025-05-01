@@ -365,10 +365,10 @@
 
     <ImageView
         android:id="@+id/imageView20"
-        android:layout_width="114dp"
-        android:layout_height="116dp"
+        android:layout_width="118dp"
+        android:layout_height="124dp"
         app:srcCompat="@drawable/circulo_perfil"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="106dp" />
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="105dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
