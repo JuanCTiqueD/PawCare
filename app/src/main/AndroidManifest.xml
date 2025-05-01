@@ -22,6 +22,9 @@
             android:name=".PerrificadoCuidador_Activity"
             android:exported="false" />
         <activity
+            android:name=".PerfilDuenoActivity"
+            android:exported="false" />
+        <activity
             android:name=".PerfilGato_Activity"
             android:exported="false" />
         <activity
