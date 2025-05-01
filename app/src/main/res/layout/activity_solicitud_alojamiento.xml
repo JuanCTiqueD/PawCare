@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".SolicitudPaseadoresActivity">
+    tools:context=".SolicitudAlojamientoActivity">
 
     <View
-        android:id="@+id/separator2"
+        android:id="@+id/separator3"
         android:layout_width="379dp"
         android:layout_height="1dp"
         android:background="#000"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.206" />
 
     <ImageView
-        android:id="@+id/btnperfil9"
+        android:id="@+id/btnperfil10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/perfil" />
 
     <ImageView
-        android:id="@+id/btnhuella6"
+        android:id="@+id/btnhuella7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +44,7 @@
         app:srcCompat="@drawable/huella" />
 
     <ImageView
-        android:id="@+id/btnhome9"
+        android:id="@+id/btnhome10"
         android:layout_width="26dp"
         android:layout_height="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,11 +56,11 @@
         app:srcCompat="@drawable/casa" />
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/tv_title4"
         android:layout_width="354dp"
         android:layout_height="59dp"
         android:text="¿Deseas hacer una
-solicitud para paseadores? "
+solicitud para alojamiento? "
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -72,7 +72,7 @@ solicitud para paseadores? "
         app:layout_constraintVertical_bias="0.313" />
 
     <Button
-        android:id="@+id/btnSolicitud"
+        android:id="@+id/btnSolicitud2"
         android:layout_width="300dp"
         android:layout_height="63dp"
         android:backgroundTint="#AA3FEC"
@@ -85,7 +85,7 @@ solicitud para paseadores? "
         app:layout_constraintVertical_bias="0.444" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,15 +97,14 @@ solicitud para paseadores? "
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageView10"
         android:layout_width="248dp"
         android:layout_height="236dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnhuella6"
+        app:layout_constraintBottom_toBottomOf="@+id/btnhuella7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.825"
-        app:srcCompat="@drawable/solicitudpaseadores" />
-
+        app:srcCompat="@drawable/solicitudalojamiento" />
 </androidx.constraintlayout.widget.ConstraintLayout>
