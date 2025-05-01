@@ -8,7 +8,7 @@
     tools:context=".Configuracion">
 
     <Button
-        android:id="@+id/btn_delete_profile"
+        android:id="@+id/btn_delete"
         android:layout_width="213dp"
         android:layout_height="57dp"
         android:backgroundTint="#C64928"
