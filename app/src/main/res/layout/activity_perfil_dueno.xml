@@ -237,10 +237,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46" />
+        app:layout_constraintVertical_bias="0.467" />
 
     <TextView
         android:id="@+id/tv_title14"
@@ -304,7 +304,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
+        app:layout_constraintVertical_bias="0.731" />
 
     <TextView
         android:id="@+id/tv_title11"
@@ -365,10 +365,10 @@
 
     <ImageView
         android:id="@+id/imageView20"
-        android:layout_width="118dp"
-        android:layout_height="124dp"
+        android:layout_width="114dp"
+        android:layout_height="116dp"
         app:srcCompat="@drawable/circulo_perfil"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="105dp" />
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="106dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
