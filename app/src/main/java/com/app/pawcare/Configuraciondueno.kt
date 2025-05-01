@@ -3,16 +3,17 @@ package com.app.pawcare
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class PerfilDuenoActivity : AppCompatActivity() {
+class Configuraciondueno : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_perfil_dueno)
+        setContentView(R.layout.activity_configuraciondueno)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -20,19 +21,19 @@ class PerfilDuenoActivity : AppCompatActivity() {
             insets
         }
 
-        // Navegación a Configuraciondueno
-        val imgConfiguracion = findViewById<ImageView>(R.id.imgConfiguracion)
-        imgConfiguracion.setOnClickListener {
-            val intent = Intent(this, Configuraciondueno::class.java)
+        // ✅ Regresar a PerfilDuenoActivity
+        val imageBack = findViewById<ImageView>(R.id.imageView36)
+        imageBack.setOnClickListener {
+            val intent = Intent(this, PerfilDuenoActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
-        // ✅ Volver a ActivityInicio al presionar btnhome14
-        val btnHome = findViewById<ImageView>(R.id.btnhome14)
-        btnHome.setOnClickListener {
-            val intent = Intent(this, ActivityInicio::class.java)
+        // ✅ Ir a EditarPerfilDueno
+        val editarPerfil = findViewById<TextView>(R.id.editarperfil)
+        editarPerfil.setOnClickListener {
+            val intent = Intent(this, EditarPerfilDueno::class.java)
             startActivity(intent)
-            finish() // Opcional: cierra esta pantalla para que no quede en el historial
         }
     }
 }
