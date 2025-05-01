@@ -43,12 +43,6 @@
             android:name=".SelecionarMascota_Activity"
             android:exported="false" />
         <activity
-            android:name=".selecionarMascota_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".SeleccionarMascota"
-            android:exported="false" />
-        <activity
             android:name=".ElegirmascotaActivity"
             android:exported="false" />
         <activity
@@ -81,9 +75,6 @@
         <activity
             android:name=".ActivityInicio"
             android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
         <activity android:name=".CuidadorActivity" />
         <activity
             android:name=".MainActivity"
@@ -95,5 +86,6 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 </manifest>
