@@ -117,7 +117,7 @@
         android:id="@+id/btnAgregarm"
         android:layout_width="142dp"
         android:layout_height="49dp"
-        android:backgroundTint="#6FAA3FEC"
+        android:backgroundTint="#C64928"
         android:text="RECHAZAR"
         app:layout_constraintBottom_toTopOf="@+id/btnperfil13"
         app:layout_constraintEnd_toEndOf="parent"
