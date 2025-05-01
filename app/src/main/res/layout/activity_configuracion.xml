@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Configuraciondueno">
+    tools:context=".Configuracion">
 
     <Button
-        android:id="@+id/btnEliminar"
+        android:id="@+id/btn_delete_profile"
         android:layout_width="213dp"
         android:layout_height="57dp"
         android:backgroundTint="#C64928"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.456" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cerrar sesión"
@@ -89,7 +89,7 @@
         app:layout_constraintVertical_bias="0.088" />
 
     <TextView
-        android:id="@+id/editarperfil"
+        android:id="@+id/edit_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Editar perfil"
@@ -103,7 +103,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Idioma"
@@ -117,7 +117,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/edit_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cambiar contraseña"
@@ -146,11 +146,11 @@
         android:id="@+id/imageView47"
         android:layout_width="40dp"
         android:layout_height="39dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnEliminar"
-        app:layout_constraintEnd_toEndOf="@+id/btnEliminar"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_delete_profile"
+        app:layout_constraintEnd_toEndOf="@+id/btn_delete_profile"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/btnEliminar"
-        app:layout_constraintTop_toTopOf="@+id/btnEliminar"
+        app:layout_constraintStart_toStartOf="@+id/btn_delete_profile"
+        app:layout_constraintTop_toTopOf="@+id/btn_delete_profile"
         app:layout_constraintVertical_bias="0.466"
         app:srcCompat="@drawable/eliminar" />
 

@@ -23,7 +23,7 @@ class EditarPerfilDueno : AppCompatActivity() {
         // ✅ Botón para volver a Configuraciondueno
         val btnBack = findViewById<ImageView>(R.id.imageView43)
         btnBack.setOnClickListener {
-            val intent = Intent(this, Configuraciondueno::class.java)
+            val intent = Intent(this, Configuracion::class.java)
             startActivity(intent)
             finish()
         }
