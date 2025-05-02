@@ -129,7 +129,7 @@
         app:srcCompat="@drawable/config" />
 
     <ImageView
-        android:id="@+id/imageView56"
+        android:id="@+id/perrificado"
         android:layout_width="60dp"
         android:layout_height="49dp"
         app:layout_constraintBottom_toBottomOf="parent"

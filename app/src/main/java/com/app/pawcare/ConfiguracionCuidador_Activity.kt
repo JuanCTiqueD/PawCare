@@ -40,7 +40,7 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
         }
 
         // 2. Botón de Regresar
-        val imageBack = findViewById<ImageView>(R.id.imageView56)
+        val imageBack = findViewById<ImageView>(R.id.perrificado)
         imageBack.setOnClickListener {
             finish() // Solo cierra esta actividad, sin reiniciar PerfilDuenoActivity
         }
