@@ -3,13 +3,21 @@ package com.app.pawcare
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class PerfilDuenoActivity : AppCompatActivity() {
+
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,26 +29,40 @@ class PerfilDuenoActivity : AppCompatActivity() {
             insets
         }
 
-        // Navegación a Configuraciondueno
+        // 🔹 Referencias a los campos de texto
+        val tvNombre = findViewById<TextView>(R.id.textView35)
+        val tvUbicacion = findViewById<TextView>(R.id.textView34)
+
+        // 🔹 Obtener usuario actual
+        val userId = auth.currentUser?.uid ?: return
+
+        // 🔹 Traer datos del usuario desde Firestore
+        db.collection("users").document(userId).get()
+            .addOnSuccessListener { document ->
+                tvNombre.text = document.getString("username") ?: "Nombre no disponible"
+                tvUbicacion.text = document.getString("location") ?: "Ubicación no disponible"
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error al obtener los datos del perfil", Toast.LENGTH_SHORT).show()
+            }
+
+        // 🔙 Botón para ir a Configuración
         val imgConfiguracion = findViewById<ImageView>(R.id.imgConfiguracion)
         imgConfiguracion.setOnClickListener {
-            val intent = Intent(this, Configuracion::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Configuracion::class.java))
         }
 
-        // Volver a ActivityInicio al presionar btnhome14
+        // 🏠 Volver a inicio
         val btnHome = findViewById<ImageView>(R.id.btnhome14)
         btnHome.setOnClickListener {
-            val intent = Intent(this, ActivityInicio::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ActivityInicio::class.java))
             finish()
         }
 
-        // Ir a SelecionarMascota_Activity al presionar btnAgregarm
+        // ➕ Agregar mascota
         val btnAgregarMascota = findViewById<AppCompatButton>(R.id.btnAgregarm)
         btnAgregarMascota.setOnClickListener {
-            val intent = Intent(this, SelecionarMascota_Activity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, SelecionarMascota_Activity::class.java))
         }
     }
 }
