@@ -13,6 +13,12 @@
         android:theme="@style/Theme.PawCare"
         tools:targetApi="31">
         <activity
+            android:name=".EditarMascota_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".perfilCuidadorActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditarPerfilDueno"
             android:exported="false" />
         <activity

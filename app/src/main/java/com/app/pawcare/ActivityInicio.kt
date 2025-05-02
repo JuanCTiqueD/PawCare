@@ -62,5 +62,7 @@ class ActivityInicio : AppCompatActivity() {
             val intent = Intent(this, PerfilDuenoActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 }
