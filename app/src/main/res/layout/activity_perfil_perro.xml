@@ -130,14 +130,16 @@
      app:layout_constraintTop_toBottomOf="@id/etNombre">
 
   <EditText
-      android:id="@+id/etEdad"
+      android:id="@+id/Fechanacer"
       android:layout_width="0dp"
       android:layout_height="48dp"
       android:layout_marginEnd="8dp"
       android:layout_weight="1"
       android:background="@drawable/rounded_text"
-      android:hint="Edad"
-      android:padding="10dp" />
+      android:hint="Fecha de nacimiento"
+      android:padding="10dp"
+      android:focusable="false"
+      android:clickable="true" />
 
   <EditText
       android:id="@+id/etEspecie"
