@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
                         else -> Intent(this, ActivityInicio::class.java)
                     }
 
+                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
                     startActivity(intent)
                     finish()
                 } else {
