@@ -2,6 +2,7 @@ package com.app.pawcare
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import android.widget.Button
 import android.widget.EditText
@@ -46,6 +47,7 @@ class Configuracion : AppCompatActivity() {
         // 3. Botón Editar Perfil (existente)
         val editarPerfil_dueno = findViewById<TextView>(R.id.editarperfil)
         editarPerfil_dueno.setOnClickListener {
+            Log.d("Configuracion Dueño", ":D")
             startActivity(Intent(this, EditarPerfilDueno::class.java))
         }
 

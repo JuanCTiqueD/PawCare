@@ -3,7 +3,9 @@ package com.app.pawcare
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,10 +32,16 @@ class EditarPerfilDueno : AppCompatActivity() {
             finish()
         }
 
-        // ✅ Botón agregar mascota
-        val btnAgregarm = findViewById<ImageView>(R.id.btnAgregarm)
-        btnAgregarm.setOnClickListener {
-            startActivity(Intent(this, SelecionarMascota_Activity::class.java))
+        val btnGuardarCambios = findViewById<Button>(R.id.btnguardarcambios)
+        btnGuardarCambios.setOnClickListener {
+            // Aquí pones lo que quieras que haga cuando el usuario guarde los cambios.
+            // Por ejemplo, podrías mostrar un mensaje:
+            Toast.makeText(this, "Cambios guardados", Toast.LENGTH_SHORT).show()
+
+            // O regresar a la pantalla anterior:
+            val intent = Intent(this, PerfilDuenoActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }
