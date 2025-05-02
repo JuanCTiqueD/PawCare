@@ -21,7 +21,7 @@
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <Button
-        android:id="@+id/btnguardarcambios2"
+        android:id="@+id/btnGuardarCuidador"
         android:layout_width="179dp"
         android:layout_height="54dp"
         android:backgroundTint="#6FAA3FEC"
