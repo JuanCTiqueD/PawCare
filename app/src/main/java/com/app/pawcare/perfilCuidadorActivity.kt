@@ -3,6 +3,7 @@ package com.app.pawcare
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class perfilCuidadorActivity : AppCompatActivity() {
-    @SuppressLint("WrongViewCast")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,14 +24,15 @@ class perfilCuidadorActivity : AppCompatActivity() {
 
         // Perrificado
 
-        val btnPerrificado = findViewById<TextView>(R.id.perrificado)
-        btnPerrificado.setOnClickListener { startActivity(Intent(this,PerrificadoCuidador_Activity::class.java))
+        val btnPerrificado = findViewById<ImageView>(R.id.perrificado)
+        btnPerrificado.setOnClickListener {
+            startActivity(Intent(this, PerrificadoCuidador_Activity::class.java))
         }
 
-        // Configuración
-        val btn_config_cuidador = findViewById<TextView>(R.id.imgConfiguracion)
-        btn_config_cuidador.setOnClickListener { startActivity(Intent(this,ConfiguracionCuidador_Activity::class.java))
+// Configuración
+        val btn_config_cuidador = findViewById<ImageView>(R.id.imgConfiguracion)
+        btn_config_cuidador.setOnClickListener {
+            startActivity(Intent(this, ConfiguracionCuidador_Activity::class.java))
         }
-
     }
 }

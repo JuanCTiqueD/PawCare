@@ -164,17 +164,33 @@
         app:layout_constraintVertical_bias="0.193"
         app:srcCompat="@drawable/favorito_icono" />
 
-    <ImageView
-        android:id="@+id/imageView35"
-        android:layout_width="27dp"
-        android:layout_height="26dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.33"
+    <!-- 👇 Aquí está el nuevo bloque de ubicación -->
+    <LinearLayout
+        android:id="@+id/layoutUbicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/textView35"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377"
-        app:srcCompat="@drawable/ubicacion" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView35"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="6dp"
+            app:srcCompat="@drawable/ubicacion" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bogotá, Colombia"
+            android:textSize="14sp"
+            android:textColor="#000000" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imgConfiguracion"
@@ -367,18 +383,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.514" />
-
-    <TextView
-        android:id="@+id/textView34"
-        android:layout_width="113dp"
-        android:layout_height="27dp"
-        android:text="Bogotá, Colombia"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView30"
-        app:layout_constraintVertical_bias="0.387" />
 
     <TextView
         android:id="@+id/textView35"

@@ -28,24 +28,28 @@ class EditarPerfilDueno : AppCompatActivity() {
         val etCorreo = findViewById<EditText>(R.id.etNombre4)
         val etUbicacion = findViewById<EditText>(R.id.etNombre3)
         val etNumero = findViewById<EditText>(R.id.etNumero)
-
         val btnBack = findViewById<ImageView>(R.id.imageView43)
+        val btnGuardarCambios = findViewById<Button>(R.id.btnguardarcambios)
+
+        // 🔙 Botón atrás que usa la pila del sistema
         btnBack.setOnClickListener {
-            startActivity(Intent(this, Configuracion::class.java))
-            finish()
+            onBackPressedDispatcher.onBackPressed()
         }
 
-        // Cargar datos actuales
+        // 📥 Cargar datos actuales del usuario
         val userId = auth.currentUser?.uid ?: return
         db.collection("users").document(userId).get()
             .addOnSuccessListener { doc ->
-                etNombre.setText(doc.getString("username"))
-                etCorreo.setText(doc.getString("email"))
-                etUbicacion.setText(doc.getString("location"))
-                etNumero.setText(doc.getString("contactNumber"))
+                etNombre.setText(doc.getString("username") ?: "")
+                etCorreo.setText(doc.getString("email") ?: "")
+                etUbicacion.setText(doc.getString("location") ?: "")
+                etNumero.setText(doc.getString("contactNumber") ?: "")
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "No se pudo cargar tu información", Toast.LENGTH_SHORT).show()
             }
 
-        val btnGuardarCambios = findViewById<Button>(R.id.btnguardarcambios)
+        // 💾 Guardar cambios al presionar el botón
         btnGuardarCambios.setOnClickListener {
             val nuevoNombre = etNombre.text.toString().trim()
             val nuevoCorreo = etCorreo.text.toString().trim()
@@ -86,3 +90,4 @@ class EditarPerfilDueno : AppCompatActivity() {
             .also { it.show() }
     }
 }
+
