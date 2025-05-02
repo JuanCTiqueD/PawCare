@@ -1,4 +1,4 @@
-# 📦 Diccionario de Datos - PawCare
+# 📦 PawCare
 
 **Universidad:** Jorge Tadeo Lozano  
 **Tecnología Base de Datos:** Firebase (Cloud Firestore)  
