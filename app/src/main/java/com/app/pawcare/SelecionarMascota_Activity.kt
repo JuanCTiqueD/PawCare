@@ -1,6 +1,8 @@
 package com.app.pawcare
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +17,19 @@ class SelecionarMascota_Activity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        //Declarar
+        val btnPerfilperro = findViewById<ImageView>(R.id.flecha_perro)
+        val btnPerfilGato = findViewById<ImageView>(R.id.flecha_gato)
+
+        // ✅ Botón perfil perro
+        btnPerfilperro.setOnClickListener {
+            startActivity(Intent(this, PerfilPerro_Activity::class.java))
+        }
+        // ✅ Botón perfil gato
+        btnPerfilGato.setOnClickListener {
+            startActivity(Intent(this, PerfilGato_Activity::class.java))
         }
     }
 }
