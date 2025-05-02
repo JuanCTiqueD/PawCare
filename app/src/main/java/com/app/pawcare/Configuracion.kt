@@ -32,8 +32,8 @@ class Configuracion : AppCompatActivity() {
         auth = Firebase.auth
 
         // 1. Botón de Cerrar Sesión
-        val tvLogout = findViewById<TextView>(R.id.btn_logout)
-        tvLogout.setOnClickListener {
+        val btn_logout = findViewById<TextView>(R.id.btn_logout)
+        btn_logout.setOnClickListener {
             cerrarSesion()
         }
 
@@ -44,14 +44,14 @@ class Configuracion : AppCompatActivity() {
         }
 
         // 3. Botón Editar Perfil (existente)
-        val editarPerfil = findViewById<TextView>(R.id.edit_profile)
-        editarPerfil.setOnClickListener {
+        val editarPerfil_dueno = findViewById<TextView>(R.id.editarperfil)
+        editarPerfil_dueno.setOnClickListener {
             startActivity(Intent(this, EditarPerfilDueno::class.java))
         }
 
         // 4. Configurar botón Eliminar Cuenta
-        val btnDelete = findViewById<Button>(R.id.btn_delete)
-        btnDelete.setOnClickListener {
+        val btnEliminar = findViewById<Button>(R.id.btnEliminar)
+        btnEliminar.setOnClickListener {
             mostrarDialogoConfirmacion()
         }
     }
@@ -183,5 +183,6 @@ class Configuracion : AppCompatActivity() {
             .create()
             .also { it.show() }
     }
+
 
 }
