@@ -10,7 +10,9 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Switch
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -133,6 +135,8 @@ class RegistroActivity : AppCompatActivity() {
     }
 
     private fun iniciarRegistroConUbicacion(ciudad: String) {
+        val progressDialog = mostrarProgressDialog("Registrando usuario...")
+
         auth.createUserWithEmailAndPassword(pendingEmail, pendingPassword)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -152,13 +156,16 @@ class RegistroActivity : AppCompatActivity() {
                             .document(it.uid)
                             .set(userData)
                             .addOnSuccessListener {
+                                progressDialog.dismiss()
                                 redirigirSegunRol(pendingIsCaregiver)
                             }
                             .addOnFailureListener { e ->
+                                progressDialog.dismiss()
                                 Toast.makeText(this, "Error al guardar datos: ${e.message}", Toast.LENGTH_SHORT).show()
                             }
                     }
                 } else {
+                    progressDialog.dismiss()
                     Toast.makeText(this, "Error en registro: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -178,6 +185,8 @@ class RegistroActivity : AppCompatActivity() {
     }
 
     private fun redirigirSegunRol(isCaregiver: Boolean) {
+        Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+
         val intent = if (isCaregiver) {
             Intent(this, CuidadorActivity::class.java)
         } else {
@@ -185,5 +194,17 @@ class RegistroActivity : AppCompatActivity() {
         }
         startActivity(intent)
         finish()
+    }
+
+    private fun mostrarProgressDialog(mensaje: String): AlertDialog {
+        val view = layoutInflater.inflate(R.layout.dialog_progress, null)
+        val tvMensaje = view.findViewById<TextView>(R.id.tv_progress_message)
+        tvMensaje.text = mensaje
+
+        return AlertDialog.Builder(this)
+            .setView(view)
+            .setCancelable(false)
+            .create()
+            .also { it.show() }
     }
 }

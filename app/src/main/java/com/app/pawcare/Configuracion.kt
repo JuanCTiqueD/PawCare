@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -85,16 +87,20 @@ class Configuracion : AppCompatActivity() {
     private fun solicitarReautenticacion() {
         val user = auth.currentUser ?: return
 
-        // 1. Mostrar diálogo para ingresar contraseña
-        val passwordDialog = AlertDialog.Builder(this)
+        // 1. Inflar el layout personalizado del diálogo
+        val dialogView = layoutInflater.inflate(R.layout.dialog_password, null)
+        val etPassword = dialogView.findViewById<EditText>(R.id.et_password)
+
+        // 2. Crear y mostrar el diálogo
+        AlertDialog.Builder(this)
             .setTitle("Verificación de seguridad")
             .setMessage("Por favor ingresa tu contraseña para confirmar:")
-            .setView(R.layout.dialog_password) // Crea este layout (abajo)
+            .setView(dialogView)
             .setPositiveButton("Confirmar") { _, _ ->
-                val password = findViewById<EditText>(R.id.et_password).text.toString()
+                val password = etPassword.text.toString()
                 val credential = EmailAuthProvider.getCredential(user.email!!, password)
 
-                // 2. Reautenticar
+                // Reautenticar
                 user.reauthenticate(credential)
                     .addOnSuccessListener {
                         eliminarCuentaCompleta()
@@ -105,37 +111,56 @@ class Configuracion : AppCompatActivity() {
             }
             .setNegativeButton("Cancelar", null)
             .create()
-
-        passwordDialog.show()
+            .show()
     }
 
     private fun eliminarCuentaCompleta() {
         val user = auth.currentUser ?: return
         val userId = user.uid
+        // Mostrar diálogo de progreso al usuario
+        val progressDialog = mostrarProgressDialog("Eliminando cuenta...")
 
-        // 1. Eliminar datos de Firestore (usuarios + mascotas relacionadas)
-        db.collection("users").document(userId).delete()
-            .addOnSuccessListener {
-                // 2. Eliminar mascotas (opcional)
-                db.collection("pets")
-                    .whereEqualTo("userId", userId)
-                    .get()
-                    .addOnSuccessListener { pets ->
-                        pets.forEach { it.reference.delete() }
+        // 1. Primero eliminar datos de Firestore y Storage
+        val deleteTasks = mutableListOf<Task<*>>()
+
+        // Añadir tarea para borrar usuario
+        deleteTasks.add(db.collection("users").document(userId).delete())
+
+        // Añadir tarea para borrar mascotas
+        deleteTasks.add(
+            db.collection("pets")
+                .whereEqualTo("userId", userId)
+                .get()
+                .continueWithTask { task ->
+                    val batch = db.batch()
+                    task.result?.forEach { doc ->
+                        batch.delete(doc.reference)
                     }
+                    batch.commit()
+                }
+        )
 
-                // 3. Eliminar imágenes de perfil (opcional)
-                storage.reference.child("profile_images/$userId.jpg").delete()
+        // Añadir tarea para borrar imagen de perfil
+        deleteTasks.add(storage.reference.child("profile_images/$userId.jpg").delete())
 
-                // 4. Eliminar cuenta de Auth
+        // Ejecutar todas las tareas en paralelo
+        Tasks.whenAllComplete(deleteTasks)
+            .addOnSuccessListener {
+                // 2. Solo después de borrar datos, eliminar la cuenta de Auth
                 user.delete()
                     .addOnSuccessListener {
+                        progressDialog.dismiss()
                         Toast.makeText(this, "Cuenta eliminada", Toast.LENGTH_SHORT).show()
                         redirigirALogin()
                     }
+                    .addOnFailureListener { e ->
+                        progressDialog.dismiss()
+                        Toast.makeText(this, "Error al eliminar cuenta: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                progressDialog.dismiss()
+                Toast.makeText(this, "Error al borrar datos: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -146,4 +171,17 @@ class Configuracion : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    private fun mostrarProgressDialog(mensaje: String): AlertDialog {
+        val view = layoutInflater.inflate(R.layout.dialog_progress, null)
+        val tvMensaje = view.findViewById<TextView>(R.id.tv_progress_message)
+        tvMensaje.text = mensaje
+
+        return AlertDialog.Builder(this)
+            .setView(view)
+            .setCancelable(false)
+            .create()
+            .also { it.show() }
+    }
+
 }
