@@ -193,16 +193,24 @@
         android:layout_width="93dp"
         android:layout_height="40dp"
         android:text="Displacia de cadera"
-        tools:layout_editor_absoluteX="281dp"
-        tools:layout_editor_absoluteY="429dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62" />
 
     <TextView
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pitbull"
-        tools:layout_editor_absoluteX="281dp"
-        tools:layout_editor_absoluteY="410dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.755"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.566" />
 
     <TextView
         android:id="@+id/tv_title15"
@@ -224,8 +232,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="6"
-        tools:layout_editor_absoluteX="281dp"
-        tools:layout_editor_absoluteY="333dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.697"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.467" />
 
     <TextView
         android:id="@+id/tv_title10"
@@ -262,16 +274,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Canina"
-        tools:layout_editor_absoluteX="281dp"
-        tools:layout_editor_absoluteY="352dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.763"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.487" />
 
     <TextView
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hembra"
-        tools:layout_editor_absoluteX="281dp"
-        tools:layout_editor_absoluteY="372dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.778"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.514" />
 
     <TextView
         android:id="@+id/tv_title13"
@@ -304,7 +324,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
+        app:layout_constraintVertical_bias="0.713" />
 
     <TextView
         android:id="@+id/tv_title11"
@@ -326,8 +346,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="23 kg"
-        tools:layout_editor_absoluteX="281dp"
-        tools:layout_editor_absoluteY="391dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.742"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.54" />
 
     <TextView
         android:id="@+id/tv_title12"
@@ -342,15 +366,19 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.508" />
+        app:layout_constraintVertical_bias="0.514" />
 
     <TextView
         android:id="@+id/textView34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="27dp"
         android:text="Bogotá, Colombia"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="273dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView30"
+        app:layout_constraintVertical_bias="0.387" />
 
     <TextView
         android:id="@+id/textView35"
@@ -360,15 +388,23 @@
         android:textColor="#242760"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="229dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.342" />
 
     <ImageView
         android:id="@+id/imageView20"
         android:layout_width="114dp"
         android:layout_height="116dp"
-        app:srcCompat="@drawable/circulo_perfil"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="106dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnhuella11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.189"
+        app:srcCompat="@drawable/circulo_perfil" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
