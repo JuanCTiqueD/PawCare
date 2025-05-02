@@ -28,7 +28,7 @@
             android:name=".EditarPerfilDueno"
             android:exported="false" />
         <activity
-            android:name=".Configuraciondueno"
+            android:name=".Configuracion"
             android:exported="false" />
         <activity
             android:name=".SolicitudCuidadorAceptada_Activity"
@@ -53,12 +53,6 @@
             android:exported="false" />
         <activity
             android:name=".SelecionarMascota_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".selecionarMascota_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".SeleccionarMascota"
             android:exported="false" />
         <activity
             android:name=".ElegirmascotaActivity"
@@ -93,9 +87,6 @@
         <activity
             android:name=".ActivityInicio"
             android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
         <activity android:name=".CuidadorActivity" />
         <activity
             android:name=".MainActivity"
@@ -107,5 +98,6 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 </manifest>
