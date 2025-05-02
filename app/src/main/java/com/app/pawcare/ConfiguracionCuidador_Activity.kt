@@ -49,7 +49,7 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
         // 3. Botón Editar Perfil (existente)
         val editarPerfil_cuidador = findViewById<TextView>(R.id.editarperfil3)
         editarPerfil_cuidador.setOnClickListener {
-            startActivity(Intent(this, EditarPerfilDueno::class.java))
+            startActivity(Intent(this, EditarPerfilCuidador_Activity::class.java))
         }
 
         // 4. Configurar botón Eliminar Cuenta
