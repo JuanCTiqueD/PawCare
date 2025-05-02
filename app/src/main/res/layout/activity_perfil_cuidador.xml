@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/diseno_verde" />
 
     <TextView
-        android:id="@+id/textView40"
+        android:id="@+id/btn_logout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sofía Jiménez"
@@ -129,7 +129,7 @@
         app:srcCompat="@drawable/config" />
 
     <ImageView
-        android:id="@+id/imageView56"
+        android:id="@+id/perrificado"
         android:layout_width="60dp"
         android:layout_height="49dp"
         app:layout_constraintBottom_toBottomOf="parent"

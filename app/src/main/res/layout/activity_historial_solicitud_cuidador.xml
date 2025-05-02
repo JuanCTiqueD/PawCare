@@ -37,7 +37,11 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView27"
         app:layout_constraintVertical_bias="0.124">
 
-
+        <ImageView
+            android:id="@+id/imageView51"
+            android:layout_width="327dp"
+            android:layout_height="279dp"
+            app:srcCompat="@drawable/solicitud1" />
     </androidx.cardview.widget.CardView>
 
     <ImageView
@@ -117,7 +121,7 @@
         android:id="@+id/btnAgregarm"
         android:layout_width="142dp"
         android:layout_height="49dp"
-        android:backgroundTint="#6FAA3FEC"
+        android:backgroundTint="#C64928"
         android:text="RECHAZAR"
         app:layout_constraintBottom_toTopOf="@+id/btnperfil13"
         app:layout_constraintEnd_toEndOf="parent"

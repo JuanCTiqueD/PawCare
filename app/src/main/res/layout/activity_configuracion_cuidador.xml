@@ -5,11 +5,23 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#fff"
-    tools:context=".Configuraciondueno">
+    android:background="#fff"
+    tools:context=".ConfiguracionCuidador_Activity">
+
+    <ImageView
+        android:id="@+id/imageView55"
+        android:layout_width="58dp"
+        android:layout_height="62dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224"
+        app:srcCompat="@drawable/editar" />
 
     <Button
-        android:id="@+id/btnEliminar"
+        android:id="@+id/btnEliminar4"
         android:layout_width="213dp"
         android:layout_height="57dp"
         android:backgroundTint="#C64928"
@@ -20,31 +32,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.843" />
 
-    <ImageView
-        android:id="@+id/imageView36"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084"
-        app:srcCompat="?attr/homeAsUpIndicator" />
-
     <View
-        android:id="@+id/separator8"
-        android:layout_width="379dp"
-        android:layout_height="1dp"
-        android:background="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.206" />
-
-    <View
-        android:id="@+id/separator10"
+        android:id="@+id/separator17"
         android:layout_width="379dp"
         android:layout_height="1dp"
         android:background="#000"
@@ -54,30 +43,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.284" />
 
-    <View
-        android:id="@+id/separator11"
-        android:layout_width="379dp"
-        android:layout_height="1dp"
-        android:background="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
-
-    <View
-        android:id="@+id/separator12"
-        android:layout_width="379dp"
-        android:layout_height="1dp"
-        android:background="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456" />
-
     <TextView
-        android:id="@+id/btn_logout"
+        android:id="@+id/btn_logout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cerrar sesión"
@@ -89,36 +56,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.088" />
 
-    <TextView
-        android:id="@+id/editarperfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar perfil"
-        android:textSize="16sp"
+    <View
+        android:id="@+id/separator18"
+        android:layout_width="379dp"
+        android:layout_height="1dp"
+        android:background="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.368" />
 
     <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Idioma"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.265"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.322"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/textView41"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cambiar contraseña"
@@ -132,43 +82,33 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView42"
-        android:layout_width="58dp"
-        android:layout_height="62dp"
+        android:id="@+id/perrificado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224"
-        app:srcCompat="@drawable/editar" />
+        app:layout_constraintVertical_bias="0.084"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
-    <ImageView
-        android:id="@+id/imageView47"
-        android:layout_width="40dp"
-        android:layout_height="39dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnEliminar"
-        app:layout_constraintEnd_toEndOf="@+id/btnEliminar"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/btnEliminar"
-        app:layout_constraintTop_toTopOf="@+id/btnEliminar"
-        app:layout_constraintVertical_bias="0.466"
-        app:srcCompat="@drawable/eliminar" />
-
-    <ImageView
-        android:id="@+id/imageView44"
-        android:layout_width="68dp"
-        android:layout_height="73dp"
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Idioma"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.265"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314"
-        app:srcCompat="@drawable/idioma" />
+        app:layout_constraintVertical_bias="0.322"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView45"
+        android:id="@+id/imageView58"
         android:layout_width="38dp"
         android:layout_height="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -179,4 +119,63 @@
         app:layout_constraintVertical_bias="0.406"
         app:srcCompat="@android:drawable/ic_menu_send" />
 
+    <ImageView
+        android:id="@+id/imageView60"
+        android:layout_width="68dp"
+        android:layout_height="73dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.314"
+        app:srcCompat="@drawable/idioma" />
+
+    <View
+        android:id="@+id/separator19"
+        android:layout_width="379dp"
+        android:layout_height="1dp"
+        android:background="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.206" />
+
+    <TextView
+        android:id="@+id/editarperfil3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar perfil"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.239"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/separator20"
+        android:layout_width="379dp"
+        android:layout_height="1dp"
+        android:background="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.456" />
+
+    <ImageView
+        android:id="@+id/imageView61"
+        android:layout_width="61dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEliminar4"
+        app:layout_constraintEnd_toEndOf="@+id/btnEliminar4"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="@+id/btnEliminar4"
+        app:layout_constraintTop_toTopOf="@+id/btnEliminar4"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/eliminar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
