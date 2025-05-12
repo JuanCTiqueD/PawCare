@@ -31,5 +31,12 @@ class SelecionarMascota_Activity : AppCompatActivity() {
         btnPerfilGato.setOnClickListener {
             startActivity(Intent(this, PerfilGato_Activity::class.java))
         }
+        // Botón de reservar (ImageView)
+        val imageView14 = findViewById<ImageView>(R.id.imageView14)
+        imageView14.setOnClickListener {
+            // Crear el Intent para abrir solicitud peluqueria
+            val intent = Intent(this, PerfilDuenoActivity::class.java)
+            startActivity(intent) // Iniciar la actividad
+        }
     }
 }

@@ -25,13 +25,7 @@ class AlojamientoActivity : AppCompatActivity() {
             startActivity(intent)
             finish() // Opcional: evita que esta pantalla quede en el historial
         }
-        // Botón de home (ImageView)
-        val btnHome = findViewById<ImageView>(R.id.btnhome3)
-        btnHome.setOnClickListener {
-            val intent = Intent(this, ActivityInicio::class.java)
-            startActivity(intent)
-            finish()
-        }
+
         //Botón reservar (Image view)
         val btnReservar = findViewById<ImageView>(R.id.btn_reservar)
         btnReservar.setOnClickListener {
