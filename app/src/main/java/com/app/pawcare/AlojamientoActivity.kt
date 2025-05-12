@@ -33,5 +33,12 @@ class AlojamientoActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //botón perfil
+
+        val btnPerfil = findViewById<ImageView>(R.id.btnperfil3)
+        btnPerfil.setOnClickListener {
+            val intent = Intent(this, PerfilDuenoActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -2,13 +2,13 @@ package com.app.pawcare
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
-class ConfiguracionCuidador_Activity : AppCompatActivity() {
+class Configuracion : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
@@ -27,33 +27,32 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_configuracion_cuidador)
-
+        setContentView(R.layout.activity_configuracion)
 
         // Inicializar Firebase Auth
         auth = Firebase.auth
 
         // 1. Botón de Cerrar Sesión
-        val btn_logout2 = findViewById<TextView>(R.id.btn_logout2)
-        btn_logout2.setOnClickListener {
+        val btn_logout = findViewById<TextView>(R.id.btn_logout)
+        btn_logout.setOnClickListener {
             cerrarSesion()
         }
 
         // 2. Botón de Regresar
-        val imageBack = findViewById<ImageView>(R.id.perrificado)
+        val imageBack = findViewById<ImageView>(R.id.imageView36)
         imageBack.setOnClickListener {
             finish() // Solo cierra esta actividad, sin reiniciar PerfilDuenoActivity
         }
 
         // 3. Botón Editar Perfil (existente)
-        val editarPerfil_cuidador = findViewById<TextView>(R.id.editarperfil3)
-        editarPerfil_cuidador.setOnClickListener {
-            startActivity(Intent(this, EditarPerfilCuidador_Activity::class.java))
+        val editarPerfil_dueno = findViewById<TextView>(R.id.editarperfil)
+        editarPerfil_dueno.setOnClickListener {
+            Log.d("Configuracion Dueño", ":D")
+            startActivity(Intent(this, EditarPerfilDueno::class.java))
         }
 
         // 4. Configurar botón Eliminar Cuenta
-        val btnEliminar = findViewById<Button>(R.id.btnEliminar4)
+        val btnEliminar = findViewById<Button>(R.id.btnEliminar)
         btnEliminar.setOnClickListener {
             mostrarDialogoConfirmacion()
         }

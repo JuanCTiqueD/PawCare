@@ -2,7 +2,10 @@ package com.app.pawcare
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -11,12 +14,14 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
+import com.google.firebase.firestore.SetOptions
+import com.google.android.gms.tasks.Tasks
+import java.util.Calendar
 
-class PerfilPerro_Activity : AppCompatActivity() {
+class EditarPerfilCuidador_Activity : AppCompatActivity() {
 
-    private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,16 +29,6 @@ class PerfilPerro_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_perfil_perro)
 
         val fechaNacimiento = findViewById<EditText>(R.id.Fechanacer)
-        val etNombre = findViewById<EditText>(R.id.etNombre)
-        val etEspecie = findViewById<EditText>(R.id.etEspecie)
-        val etSexo = findViewById<EditText>(R.id.etSexo)
-        val etPeso = findViewById<EditText>(R.id.etPeso)
-        val etVacunas = findViewById<EditText>(R.id.etVacunas)
-        val etAlergias = findViewById<EditText>(R.id.etAlergias)
-        val etCondicion = findViewById<EditText>(R.id.etCondicion)
-        val btnGuardar = findViewById<Button>(R.id.btnGuardar)
-
-        // Picker de fecha
         fechaNacimiento.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -52,7 +47,15 @@ class PerfilPerro_Activity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        // Botón guardar
+        val etNombre = findViewById<EditText>(R.id.etNombre)
+        val etEspecie = findViewById<EditText>(R.id.etEspecie)
+        val etSexo = findViewById<EditText>(R.id.etSexo)
+        val etPeso = findViewById<EditText>(R.id.etPeso)
+        val etVacunas = findViewById<EditText>(R.id.etVacunas)
+        val etAlergias = findViewById<EditText>(R.id.etAlergias)
+        val etCondicion = findViewById<EditText>(R.id.etCondicion)
+        val btnGuardar = findViewById<Button>(R.id.btnGuardar)
+
         btnGuardar.setOnClickListener {
             val userId = auth.currentUser?.uid ?: return@setOnClickListener
 
@@ -75,7 +78,7 @@ class PerfilPerro_Activity : AppCompatActivity() {
                 "birthDate" to fechaNac,
                 "diseases" to enfermedades,
                 "allergies" to alergias,
-                "breed" to "Desconocida", // Puedes agregar campo específico si lo necesitas
+                "breed" to "Desconocida",
                 "profileImage" to "",
                 "createdAt" to FieldValue.serverTimestamp(),
                 "lastModifiedAt" to FieldValue.serverTimestamp()
@@ -85,7 +88,7 @@ class PerfilPerro_Activity : AppCompatActivity() {
                 .add(nuevaMascota)
                 .addOnSuccessListener {
                     progressDialog.dismiss()
-                    Toast.makeText(this, "Mascota guardada correctamente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Mascota registrada correctamente", Toast.LENGTH_SHORT).show()
                     finish()
                 }
                 .addOnFailureListener {
@@ -94,7 +97,6 @@ class PerfilPerro_Activity : AppCompatActivity() {
                 }
         }
 
-        // Safe padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
