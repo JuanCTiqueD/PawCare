@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/btnEliminar2"
         android:layout_width="167dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:backgroundTint="#C64928"
         android:clickable="true"
         android:text="         Eliminar "
@@ -212,7 +212,7 @@
     <Button
         android:id="@+id/btnGuardar"
         android:layout_width="167dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:backgroundTint="#80AA3FEC"
         android:clickable="true"
         android:text="GUARDAR DATOS"
