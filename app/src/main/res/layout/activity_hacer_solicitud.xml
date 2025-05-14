@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".Hacer_solicitud">
+    tools:context=".HacerSolicitudActivity">
 
     <ImageView
         android:id="@+id/imageView52"
@@ -146,7 +146,7 @@
         android:layout_height="48dp"
         android:backgroundTint="#80AA3FEC"
         android:clickable="true"
-        android:text="COMFIRMAR"
+        android:text="CONFIRMAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -19,7 +19,7 @@
             android:name=".Editar_solicitud"
             android:exported="false" />
         <activity
-            android:name=".Hacer_solicitud"
+            android:name=".HacerSolicitudActivity"
             android:exported="false" />
         <activity
             android:name=".ConfiguracionCuidador_Activity"
