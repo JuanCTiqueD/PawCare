@@ -25,6 +25,7 @@ class ActivityInicio : AppCompatActivity() {
         val btnPeluqueria = findViewById<ImageView>(R.id.btn_peluqueria)
         val btnPerfil = findViewById<ImageView>(R.id.btnperfil)
         val tvNombreUser = findViewById<TextView>(R.id.Nombre_user)
+        val btnhuella =findViewById<TextView>(R.id.btnhuella)
 
         // ✅ Obtener el nombre del usuario desde Firestore
         val currentUser = auth.currentUser
@@ -60,6 +61,11 @@ class ActivityInicio : AppCompatActivity() {
         // ✅ Ir a la pantalla de perfil al hacer clic en el botón de perfil
         btnPerfil.setOnClickListener {
             val intent = Intent(this, PerfilDuenoActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnhuella.setOnClickListener {
+            val intent = Intent(this,HacerSolicitudActivity::class.java)
             startActivity(intent)
         }
 
