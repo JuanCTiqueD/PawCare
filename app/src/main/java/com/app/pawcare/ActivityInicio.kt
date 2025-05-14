@@ -25,7 +25,7 @@ class ActivityInicio : AppCompatActivity() {
         val btnPeluqueria = findViewById<ImageView>(R.id.btn_peluqueria)
         val btnPerfil = findViewById<ImageView>(R.id.btnperfil)
         val tvNombreUser = findViewById<TextView>(R.id.Nombre_user)
-        val btnhuella =findViewById<TextView>(R.id.btnhuella)
+        val btnhuella =findViewById<ImageView>(R.id.btnhuella)
 
         // ✅ Obtener el nombre del usuario desde Firestore
         val currentUser = auth.currentUser

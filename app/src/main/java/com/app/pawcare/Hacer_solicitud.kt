@@ -28,13 +28,14 @@ class HacerSolicitudActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hacer_solicitud)
 
+        // Asignación correcta a las variables globales
         etFechaInicio = findViewById(R.id.etFechaInicio)
-        etFechaFin = findViewById(R.id.etFechaFin)
+        etFechaFin = findViewById(R.id.etFechaFinal)
         etHoraInicio = findViewById(R.id.etHoraInicio)
-        etHoraFin = findViewById(R.id.etHoraFin)
+        etHoraFin = findViewById(R.id.etHoraFinal)
         etUbicacion = findViewById(R.id.etUbicacion)
         etServicio = findViewById(R.id.etServicio)
-        btnGuardar = findViewById(R.id.btnGuardarServicio)
+        btnGuardar = findViewById(R.id.btnGuardar)
 
         etFechaInicio.setOnClickListener { showDatePicker(etFechaInicio) }
         etFechaFin.setOnClickListener { showDatePicker(etFechaFin) }
