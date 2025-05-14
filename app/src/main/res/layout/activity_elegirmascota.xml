@@ -9,42 +9,6 @@
     tools:context=".ElegirmascotaActivity">
 
     <ImageView
-        android:id="@+id/btnhome8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975"
-        app:srcCompat="@drawable/casa" />
-
-    <ImageView
-        android:id="@+id/btnperfil8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.855"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
-        app:srcCompat="@drawable/perfil" />
-
-    <ImageView
-        android:id="@+id/btnhuella5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.974"
-        app:srcCompat="@drawable/huella" />
-
-    <ImageView
         android:id="@+id/imageView3"
         android:layout_width="412dp"
         android:layout_height="178dp"
@@ -95,7 +59,9 @@
         app:layout_constraintVertical_bias="0.072"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="325dp"
         android:layout_height="192dp"
         android:layout_margin="16dp"
@@ -106,11 +72,27 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.43">
+        app:layout_constraintTop_toTopOf="@+id/imageView3">
 
+        <!-- Aquí está tu contenido dentro del CardView -->
+
+        <ImageView
+            android:id="@+id/imageView33"
+            android:layout_width="108dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_title9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:text="Mis mascotas"
+            android:textColor="#C64928"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
 

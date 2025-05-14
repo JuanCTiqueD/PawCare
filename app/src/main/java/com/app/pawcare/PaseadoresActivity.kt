@@ -25,12 +25,13 @@ class PaseadoresActivity : AppCompatActivity() {
             startActivity(intent)
             finish() // Opcional: evita que esta pantalla quede en el historial
         }
-        // Botón de home (ImageView)
-        val btnHome = findViewById<ImageView>(R.id.btnhome5)
-        btnHome.setOnClickListener {
-            val intent = Intent(this, ActivityInicio::class.java)
-            startActivity(intent)
-            finish()
+        // Botón de reservar (ImageView)
+        val btnReservar = findViewById<ImageView>(R.id.btn_reservar)
+        btnReservar.setOnClickListener {
+            // Crear el Intent para abrir solicitud peluqueria
+            val intent = Intent(this, SolicitudPaseadoresActivity::class.java)
+            startActivity(intent) // Iniciar la actividad
         }
+
     }
 }
