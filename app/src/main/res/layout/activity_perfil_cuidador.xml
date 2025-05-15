@@ -178,6 +178,7 @@ aceptado:
         android:text="Experiencia en alimentación, paseos, higiene y atención de mascotas. Responsable, atento y comprometido con su bienestar y seguridad."
         app:layout_constraintBottom_toTopOf="@+id/tv_title20"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title18"
         app:layout_constraintVertical_bias="0.0" />
@@ -242,10 +243,12 @@ aceptado:
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="10-20 kg"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_title22"
-        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+        app:layout_constraintTop_toBottomOf="@+id/textView42"
+        app:layout_constraintVertical_bias="0.242" />
 
     <View
         android:id="@+id/separator15"
