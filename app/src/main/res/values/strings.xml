@@ -1,0 +1,75 @@
+<resources>
+
+    // Layout registro
+    <string name="app_name">PawCare</string>
+    <string name="welcome_text">Bienvenid@ a Pawcare</string>
+    <string name="register">Registrarse</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="or">or</string>
+    <string name="username_hint">Usuario</string>
+    <string name="password_hint">Contraseña</string>
+
+
+    // Layout Seleccion mascota
+    <string name="selection">Selecciona tu mascota</string>
+    <string name="dog">Perro</string>
+    <string name="cat">Gato</string>
+
+    // Layout Perfil mascota
+    <string name="data">Datos</string>
+    <string name="add_image">Agregar imagen</string>
+    <string name="save">Guardar datos</string>
+
+
+    // Layout Perrificado
+    <string name="perrificado_titulo">¡Perfil Perrificado!</string>
+    <string name="perrificado">El sello "Perfil Perrificado" 🐶
+        garantiza que un perfil ha sido verificado, tiene
+        certificaciones y cumple altos
+        estándares de calidad,
+        asegurando opciones
+        confiables y seguras.
+        ¡Busca el ícono y elige con confianza!\n✅🌟</string>
+
+    <string name="chat_input_hint">Escribe un mensaje...</string>
+    <string name="chat_send_button_description">Enviar mensaje</string>
+    <string name="chat_attach_image_description">Adjuntar imagen</string>
+    <string name="chat_image_sent_description">Imagen enviada</string>
+    <string name="chat_image_received_description">Imagen recibida</string>
+    <string name="chat_placeholder_timestamp">10:00 AM</string>
+    <string name="chat_placeholder_message">Mensaje de prueba.</string>
+    <string name="chat_placeholder_sender_name">Nombre Remitente</string>
+    <string name="chat_error_auth">Error: Usuario no autenticado.</string>
+    <string name="chat_error_no_receiver_info">Error: No se pudo identificar al destinatario.</string>
+    <string name="chat_error_send_message">Error al enviar el mensaje.</string>
+    <string name="chat_error_load_messages">Error al cargar los mensajes.</string>
+    <string name="chat_info_message_sent">Mensaje enviado.</string>
+    <string name="chat_image_upload_progress">Subiendo imagen...</string>
+    <string name="chat_error_image_upload">Error al subir la imagen.</string>
+    <string name="chat_error_no_file_selected">No se seleccionó ningún archivo.</string>
+    <string name="login_required_for_chat_test">Debes iniciar sesión para probar el chat.</string> <string name="username_not_found_firestore">Nombre no encontrado, usando email.</string> <string name="user_default_name">Usuario</string> <string name="chat_cannot_chat_with_yourself">No puedes chatear contigo mismo.</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="confirm">Confirmar</string>
+    <string name="confirm_delete_message">¿Estás seguro? Todos tus datos (incluyendo mascotas y reservas) se borrarán permanentemente.</string>
+    <string name="delete">Eliminar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="password_verification">Verificación de seguridad</string>
+    <string name="enter_password_to_confirm">Por favor ingresa tu contraseña para confirmar:</string>
+    <string name="confirm_button">Confirmar</string>
+    <string name="incorrect_password">Contraseña incorrecta</string>
+    <string name="processing">Procesando...</string>
+    <string name="account_deleted_successfully">Cuenta eliminada exitosamente</string>
+    <string name="error_deleting_account">Error al eliminar cuenta: %1$s</string>
+    <string name="error_deleting_data">Error al borrar datos: %1$s</string>
+
+    <string name="name_not_available">Nombre no disponible</string>
+    <string name="location_not_available">Ubicación no disponible</string>
+    <string name="user_not_authenticated_error">Usuario no autenticado.</string>
+    <string name="chat_info_unavailable">No se pudo iniciar el chat. Información del contacto no disponible.</string>
+    <string name="add_pet_button">Agregar mascota</string> ```
+    <string name="welcome_default">¡Bienvenido!</string>
+
+    <string name="caregiver_profile_title_default">Título del Perfil del Cuidador por Defecto</string>
+
+
+</resources>
