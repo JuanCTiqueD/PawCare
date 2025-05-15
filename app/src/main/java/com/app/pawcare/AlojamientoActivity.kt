@@ -105,6 +105,7 @@ class CuidadoresAdapter(
                 "alojamiento" -> Intent(context, SolicitudAlojamientoActivity::class.java)
                 "escuela" -> Intent(context, SolicitudEscuelaActivity::class.java)
                 "peluqueria" -> Intent(context, SolicitudPeluqueriaActivity::class.java)
+                "paseador" -> Intent(context, SolicitudPaseadoresActivity::class.java)
                 else -> null
             }
             intent?.let {
