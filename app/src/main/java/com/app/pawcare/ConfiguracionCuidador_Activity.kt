@@ -129,8 +129,13 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
 
         val deleteTasks = mutableListOf<Task<*>>()
 
+        // Eliminar usuario de la colección "users"
         deleteTasks.add(db.collection("users").document(userId).delete())
 
+        // Eliminar documento de la colección "caregivers"
+        deleteTasks.add(db.collection("caregivers").document(userId).delete())
+
+        // Eliminar mascotas asociadas
         deleteTasks.add(
             db.collection("pets")
                 .whereEqualTo("userId", userId)
@@ -144,8 +149,10 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
                 }
         )
 
+        // Eliminar imagen de perfil si existe
         deleteTasks.add(storage.reference.child("profile_images/$userId.jpg").delete())
 
+        // Ejecutar todas las tareas
         Tasks.whenAllComplete(deleteTasks)
             .addOnSuccessListener {
                 user.delete()

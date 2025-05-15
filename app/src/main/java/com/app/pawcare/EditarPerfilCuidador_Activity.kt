@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
-import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -38,7 +37,7 @@ class EditarPerfilCuidador_Activity : AppCompatActivity() {
         val etPrecio = findViewById<EditText>(R.id.precio)
         val btnGuardar = findViewById<Button>(R.id.btnGuardarCuidador)
 
-        // Cargar información previa si existe
+        // Cargar datos de Firestore
         db.collection("users").document(uid).get().addOnSuccessListener { doc ->
             etNombre.setText(doc.getString("username") ?: "")
             etCorreo.setText(doc.getString("email") ?: "")
@@ -53,7 +52,11 @@ class EditarPerfilCuidador_Activity : AppCompatActivity() {
                 "${it["min"]} - ${it["max"]} kg"
             } ?: "")
             etPrecio.setText(doc.getDouble("hourlyRate")?.toString() ?: "")
-            anadirservicio.text = (doc.get("services") as? List<*>)?.joinToString(", ") ?: ""
+
+            val serviciosGuardados = doc.get("services") as? List<*> ?: emptyList<Any>()
+            val claves = serviciosGuardados.mapNotNull { it?.toString() }
+            anadirservicio.tag = claves.toMutableList()
+            anadirservicio.text = claves.joinToString(", ") { traducirServicio(it) }
         }
 
         btnAgregarServicio.setOnClickListener { view -> mostrarMenuServicios(view) }
@@ -65,10 +68,11 @@ class EditarPerfilCuidador_Activity : AppCompatActivity() {
         btnGuardar.setOnClickListener {
             val nombre = etNombre.text.toString().trim()
             val correo = etCorreo.text.toString().trim()
+            val numero = etNumero.text.toString().trim()
             val descripcion = etDescripcion.text.toString().trim()
             val experiencia = etExperiencia.text.toString().trim()
             val certificaciones = etCertificaciones.text.toString().split(",").map { it.trim() }.filter { it.isNotEmpty() }
-            val servicios = anadirservicio.text.toString().split(",").map { it.trim() }.filter { it.isNotEmpty() }
+            val servicios = anadirservicio.tag as? List<String> ?: emptyList()
             val precio = etPrecio.text.toString().toFloatOrNull() ?: 0f
 
             val tamanos = etTamanos.text.toString()
@@ -77,7 +81,6 @@ class EditarPerfilCuidador_Activity : AppCompatActivity() {
                 "min" to (tamanosSplit.getOrNull(0) ?: 0f),
                 "max" to (tamanosSplit.getOrNull(1) ?: 0f)
             )
-            val numero = etNumero.text.toString().trim()
 
             val userMap = mapOf(
                 "username" to nombre,
@@ -96,7 +99,6 @@ class EditarPerfilCuidador_Activity : AppCompatActivity() {
                 "lastModifiedAt" to com.google.firebase.firestore.FieldValue.serverTimestamp()
             )
 
-            // Guardar en Firestore (crear o actualizar)
             db.collection("users").document(uid).set(userMap, SetOptions.merge())
                 .continueWithTask {
                     db.collection("caregivers").document(uid).set(caregiverMap, SetOptions.merge())
@@ -116,41 +118,54 @@ class EditarPerfilCuidador_Activity : AppCompatActivity() {
         val inflater: MenuInflater = popup.menuInflater
         inflater.inflate(R.menu.servicios_menu, popup.menu)
 
-        popup.setOnMenuItemClickListener { item ->
-            val servicio = when (item.itemId) {
-                R.id.servicio_paseador -> "Paseador de mascotas"
-                R.id.servicio_cuidador -> "Cuidador de mascotas"
-                R.id.servicio_escuela -> "Escuela de adiestramiento"
-                R.id.servicio_spa -> "Spa para mascotas"
-                else -> null
-            }
+        val servicioMap = mapOf(
+            R.id.servicio_paseador to "walker",
+            R.id.servicio_cuidador to "boarding",
+            R.id.servicio_escuela to "training",
+            R.id.servicio_spa to "grooming"
+        )
 
-            servicio?.let {
-                mostrarSeleccion(it)
+        val displayMap = mapOf(
+            "walker" to "Paseador de mascotas",
+            "boarding" to "Alojamiento de mascotas",
+            "training" to "Escuela de adiestramiento",
+            "grooming" to "Spa para mascotas"
+        )
+
+        popup.setOnMenuItemClickListener { item ->
+            val key = servicioMap[item.itemId]
+            if (key != null) {
+                mostrarSeleccion(key, displayMap[key] ?: key)
                 true
-            } ?: false
+            } else false
         }
 
         popup.show()
     }
 
-    private fun mostrarSeleccion(servicio: String) {
-        val serviciosActuales = anadirservicio.text.toString()
-        val listaServicios = serviciosActuales.split(",").map { it.trim() }.toMutableList()
-
-        if (!listaServicios.contains(servicio)) {
-            listaServicios.add(servicio)
-            anadirservicio.text = listaServicios.joinToString(", ")
+    private fun mostrarSeleccion(servicioKey: String, servicioNombre: String) {
+        val listaServicios = (anadirservicio.tag as? MutableList<String>) ?: mutableListOf()
+        if (!listaServicios.contains(servicioKey)) {
+            listaServicios.add(servicioKey)
+            anadirservicio.tag = listaServicios
+            anadirservicio.text = listaServicios.joinToString(", ") { traducirServicio(it) }
         }
+        Toast.makeText(this, "Servicio añadido: $servicioNombre", Toast.LENGTH_SHORT).show()
+    }
 
-        Toast.makeText(this, "Servicio añadido: $servicio", Toast.LENGTH_SHORT).show()
+    private fun traducirServicio(clave: String): String {
+        return when (clave) {
+            "walker" -> "Paseador de mascotas"
+            "boarding" -> "Alojamiento de mascotas"
+            "training" -> "Escuela de adiestramiento"
+            "grooming" -> "Spa para mascotas"
+            else -> clave
+        }
     }
 
     private fun redirigirAPerfil() {
-        Toast.makeText(this, "Perfil actualizado correctamente", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, perfilCuidadorActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
-
 }
