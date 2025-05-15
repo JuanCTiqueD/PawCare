@@ -1,6 +1,5 @@
 package com.app.pawcare
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
@@ -9,35 +8,82 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class perfilCuidadorActivity : AppCompatActivity() {
+
+    private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_perfil_cuidador)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Perrificado
-
-        val btnPerrificado = findViewById<ImageView>(R.id.perrificado)
-        btnPerrificado.setOnClickListener {
+        // Botones
+        findViewById<ImageView>(R.id.perrificado).setOnClickListener {
             startActivity(Intent(this, PerrificadoCuidador_Activity::class.java))
         }
-        // Boton Home cuidador activity
-        val imageBack = findViewById<ImageView>(R.id.btnhome17)
-        imageBack.setOnClickListener {
+
+        findViewById<ImageView>(R.id.btnhome17).setOnClickListener {
             startActivity(Intent(this, CuidadorActivity::class.java))
         }
 
-// Configuración
-        val btn_config_cuidador = findViewById<ImageView>(R.id.imgConfiguracion)
-        btn_config_cuidador.setOnClickListener {
+        findViewById<ImageView>(R.id.imgConfiguracion).setOnClickListener {
             startActivity(Intent(this, ConfiguracionCuidador_Activity::class.java))
         }
+
+        cargarDatosPerfil()
+    }
+
+    private fun cargarDatosPerfil() {
+        val userId = auth.currentUser?.uid ?: return
+
+        val tvNombre = findViewById<TextView>(R.id.btn_logout2)
+        val tvUbicacion = findViewById<TextView>(R.id.textView41)
+        val tvDescripcion = findViewById<TextView>(R.id.textView39)
+        val tvExperiencia = findViewById<TextView>(R.id.textView43)
+        val tvCertificaciones = findViewById<TextView>(R.id.textView42)
+        val tvPrecio = findViewById<TextView>(R.id.textView38)
+        val tvTamañoAceptado = findViewById<TextView>(R.id.textView44)
+        val imgPerfil = findViewById<ImageView>(R.id.imageView53)
+
+        // Obtener datos del usuario
+        db.collection("users").document(userId).get()
+            .addOnSuccessListener { userDoc ->
+                tvNombre.text = userDoc.getString("username") ?: "Sin nombre"
+                tvUbicacion.text = userDoc.getString("location") ?: "Ubicación desconocida"
+                userDoc.getString("profileImage")?.let { url ->
+                    if (url.isNotBlank()) {
+                        Glide.with(this).load(url).circleCrop().into(imgPerfil)
+                    }
+                }
+            }
+
+        // Obtener datos del cuidador
+        db.collection("caregivers").document(userId).get()
+            .addOnSuccessListener { caregiverDoc ->
+                tvDescripcion.text = caregiverDoc.getString("description") ?: "Sin descripción"
+                tvExperiencia.text = caregiverDoc.getString("experience") ?: "0 años"
+
+                val precio = caregiverDoc.getDouble("hourlyRate") ?: 0.0
+                tvPrecio.text = "$${precio}/Noche"
+
+                val certificaciones = caregiverDoc.get("certifications") as? List<*> ?: emptyList<Any>()
+                tvCertificaciones.text = certificaciones.joinToString("\n") { it.toString() }
+
+                val acceptedSize = caregiverDoc.get("acceptedPetSizes") as? Map<*, *>
+                val min = acceptedSize?.get("min")?.toString()?.toFloatOrNull() ?: 0f
+                val max = acceptedSize?.get("max")?.toString()?.toFloatOrNull() ?: 0f
+                tvTamañoAceptado.text = "${min.toInt()}-${max.toInt()} kg"
+            }
     }
 }
