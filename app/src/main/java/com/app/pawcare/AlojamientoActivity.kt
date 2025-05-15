@@ -104,6 +104,7 @@ class CuidadoresAdapter(
             val intent = when (tipoServicio) {
                 "alojamiento" -> Intent(context, SolicitudAlojamientoActivity::class.java)
                 "escuela" -> Intent(context, SolicitudEscuelaActivity::class.java)
+                "peluqueria" -> Intent(context, SolicitudPeluqueriaActivity::class.java)
                 else -> null
             }
             intent?.let {
