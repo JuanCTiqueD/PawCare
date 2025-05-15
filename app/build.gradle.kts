@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = false // Cámbialo a true para producción
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -42,31 +42,34 @@ android {
 }
 
 dependencies {
+    // BoM de Firebase (solo una vez, última versión estable)
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
+
+    // AndroidX y Material
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.firebase.common.ktx)
-    implementation(libs.firebase.storage.ktx)
+
+    // SplashScreen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+    // Firebase (mediante BoM, sin especificar versión)
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
+
+    // Google Play Services para ubicación
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+
+    // Glide (para imágenes)
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation("androidx.core:core-splashscreen:1.0.1")
-
-    implementation("com.github.bumptech.glide:glide:4.12.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
-
-    // Firebase BoM y servicios
-    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
-    implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-auth-ktx")
-    implementation("com.google.firebase:firebase-firestore-ktx")
-    implementation("com.google.android.gms:play-services-location:21.0.1")
-    implementation("com.google.firebase:firebase-storage:20.3.0")
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
-
-
 }
