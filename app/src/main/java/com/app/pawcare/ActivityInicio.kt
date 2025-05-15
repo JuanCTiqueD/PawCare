@@ -66,7 +66,7 @@ class ActivityInicio : AppCompatActivity() {
         }
 
         btnhuella.setOnClickListener {
-            val intent = Intent(this,ActivityHistorialSolicitudDuenoBinding::class.java)
+            val intent = Intent(this,historial_solicitud_dueno::class.java)
             startActivity(intent)
         }
 
