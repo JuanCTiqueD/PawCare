@@ -1,5 +1,6 @@
 package com.app.pawcare
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
@@ -29,7 +30,7 @@ class AlojamientoActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerCuidadores)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = CuidadoresAdapter(listaCuidadores)
+        adapter = CuidadoresAdapter(listaCuidadores, "alojamiento", this)
         recyclerView.adapter = adapter
 
         findViewById<ImageView>(R.id.btn_regresar3).setOnClickListener {
@@ -75,12 +76,17 @@ class AlojamientoActivity : AppCompatActivity() {
 data class Cuidador(val nombre: String, val ubicacion: String, val precio: String)
 
 // Adaptador para el RecyclerView
-class CuidadoresAdapter(private val cuidadores: List<Cuidador>) : RecyclerView.Adapter<CuidadoresAdapter.ViewHolder>() {
+class CuidadoresAdapter(
+    private val cuidadores: List<Cuidador>,
+    private val tipoServicio: String, // "alojamiento" o "escuela"
+    private val context: android.content.Context
+) : RecyclerView.Adapter<CuidadoresAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: android.view.View) : RecyclerView.ViewHolder(itemView) {
         val nombre = itemView.findViewById<android.widget.TextView>(R.id.tv_nombre)
         val ubicacion = itemView.findViewById<android.widget.TextView>(R.id.tv_ubicacion)
         val precio = itemView.findViewById<android.widget.TextView>(R.id.tv_precio)
+        val btnReservar = itemView.findViewById<android.widget.ImageView>(R.id.btn_reservar)
     }
 
     override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): ViewHolder {
@@ -93,7 +99,19 @@ class CuidadoresAdapter(private val cuidadores: List<Cuidador>) : RecyclerView.A
         holder.nombre.text = cuidador.nombre
         holder.ubicacion.text = cuidador.ubicacion
         holder.precio.text = cuidador.precio
+
+        holder.btnReservar.setOnClickListener {
+            val intent = when (tipoServicio) {
+                "alojamiento" -> Intent(context, SolicitudAlojamientoActivity::class.java)
+                "escuela" -> Intent(context, SolicitudEscuelaActivity::class.java)
+                else -> null
+            }
+            intent?.let {
+                context.startActivity(it)
+            }
+        }
     }
 
     override fun getItemCount(): Int = cuidadores.size
 }
+
