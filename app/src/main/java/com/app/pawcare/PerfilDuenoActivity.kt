@@ -58,6 +58,12 @@ class PerfilDuenoActivity : AppCompatActivity() {
             startActivity(Intent(this, ActivityInicio::class.java))
             finish()
         }
+        // Editar mascota
+        val btnEditarmascotaa = findViewById<TextView>(R.id.textView40)
+        btnEditarmascotaa.setOnClickListener {
+            startActivity(Intent(this, EditarMascota_Activity::class.java))
+            finish()
+        }
 
         // ➕ Agregar mascota
         val btnAgregarMascota = findViewById<AppCompatButton>(R.id.btnAgregarm)
@@ -66,3 +72,5 @@ class PerfilDuenoActivity : AppCompatActivity() {
         }
     }
 }
+
+

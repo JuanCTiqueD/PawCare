@@ -1,6 +1,7 @@
 package com.app.pawcare
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
@@ -99,6 +100,11 @@ class PerfilPerro_Activity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        // 2. Botón de Regresar a seleccionar mascota
+        val imageBack = findViewById<ImageView>(R.id.imageView16)
+        imageBack.setOnClickListener {
+            startActivity(Intent(this, SelecionarMascota_Activity::class.java))
         }
     }
 

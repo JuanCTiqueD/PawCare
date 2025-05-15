@@ -2,27 +2,26 @@ package com.app.pawcare
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class PerrificadoCuidador_Activity : AppCompatActivity() {
+class historial_solicitud_dueno : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_perrificado_cuidador)
+        setContentView(R.layout.activity_historial_solicitud_dueno)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // Botón de regresar a perfil cuidador
-        val btnRegresar = findViewById<ImageView>(R.id.imageView41)
-        btnRegresar.setOnClickListener {
-            val intent = Intent(this, perfilCuidadorActivity::class.java)
-            startActivity(intent)
+
+        val btnEditarsolicitud= findViewById<TextView>(R.id.textView40)
+        btnEditarsolicitud.setOnClickListener {
+            startActivity(Intent(this, btnEditarsolicitud::class.java))
             finish()
         }
     }

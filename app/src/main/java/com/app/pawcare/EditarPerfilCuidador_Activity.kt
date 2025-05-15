@@ -1,116 +1,64 @@
 package com.app.pawcare
 
-import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
+import android.view.MenuInflater
+import android.view.View
+import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
-import com.google.android.gms.tasks.Tasks
-import java.util.Calendar
 
 class EditarPerfilCuidador_Activity : AppCompatActivity() {
 
-    private val db = FirebaseFirestore.getInstance()
-    private val auth = FirebaseAuth.getInstance()
+    private lateinit var anadirservicio: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_perfil_perro)
+        setContentView(R.layout.activity_editar_perfil_cuidador)
 
-        val fechaNacimiento = findViewById<EditText>(R.id.Fechanacer)
-        fechaNacimiento.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val btnAgregarServicio: ImageView = findViewById(R.id.btnAgregarServicio)
+        val imageViewEditar: ImageView = findViewById(R.id.imageView67) // ← botón que te llevará a Configuración
 
-            val datePickerDialog = DatePickerDialog(
-                this,
-                { _, selectedYear, selectedMonth, selectedDay ->
-                    val fecha = String.format("%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay)
-                    fechaNacimiento.setText(fecha)
-                },
-                year, month, day
-            )
+        anadirservicio = findViewById(R.id.anadirservicio)
 
-            datePickerDialog.show()
+        btnAgregarServicio.setOnClickListener { view ->
+            mostrarMenuServicios(view)
         }
 
-        val etNombre = findViewById<EditText>(R.id.etNombre)
-        val etEspecie = findViewById<EditText>(R.id.etEspecie)
-        val etSexo = findViewById<EditText>(R.id.etSexo)
-        val etPeso = findViewById<EditText>(R.id.etPeso)
-        val etVacunas = findViewById<EditText>(R.id.etVacunas)
-        val etAlergias = findViewById<EditText>(R.id.etAlergias)
-        val etCondicion = findViewById<EditText>(R.id.etCondicion)
-        val btnGuardar = findViewById<Button>(R.id.btnGuardar)
-
-        btnGuardar.setOnClickListener {
-            val userId = auth.currentUser?.uid ?: return@setOnClickListener
-
-            val nombre = etNombre.text.toString().trim()
-            val especie = etEspecie.text.toString().trim()
-            val sexo = etSexo.text.toString().trim()
-            val peso = etPeso.text.toString().trim().toFloatOrNull() ?: 0f
-            val fechaNac = fechaNacimiento.text.toString().trim()
-            val enfermedades = etCondicion.text.toString().split(",").map { it.trim() }.filter { it.isNotEmpty() }
-            val alergias = etAlergias.text.toString().split(",").map { it.trim() }.filter { it.isNotEmpty() }
-
-            val progressDialog = mostrarProgressDialog("Guardando mascota...")
-
-            val nuevaMascota = hashMapOf(
-                "userId" to userId,
-                "name" to nombre,
-                "species" to especie,
-                "sex" to sexo,
-                "weight" to peso,
-                "birthDate" to fechaNac,
-                "diseases" to enfermedades,
-                "allergies" to alergias,
-                "breed" to "Desconocida",
-                "profileImage" to "",
-                "createdAt" to FieldValue.serverTimestamp(),
-                "lastModifiedAt" to FieldValue.serverTimestamp()
-            )
-
-            db.collection("pets")
-                .add(nuevaMascota)
-                .addOnSuccessListener {
-                    progressDialog.dismiss()
-                    Toast.makeText(this, "Mascota registrada correctamente", Toast.LENGTH_SHORT).show()
-                    finish()
-                }
-                .addOnFailureListener {
-                    progressDialog.dismiss()
-                    Toast.makeText(this, "Error al guardar: ${it.message}", Toast.LENGTH_SHORT).show()
-                }
-        }
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        // Navegación a ConfiguracionCuidador_Activity
+        imageViewEditar.setOnClickListener {
+            val intent = Intent(this, ConfiguracionCuidador_Activity::class.java)
+            startActivity(intent)
         }
     }
 
-    private fun mostrarProgressDialog(mensaje: String): AlertDialog {
-        val view = layoutInflater.inflate(R.layout.dialog_progress, null)
-        view.findViewById<TextView>(R.id.tv_progress_message).text = mensaje
-        return AlertDialog.Builder(this)
-            .setView(view)
-            .setCancelable(false)
-            .create()
-            .also { it.show() }
+    private fun mostrarMenuServicios(view: View) {
+        val popup = PopupMenu(this, view)
+        val inflater: MenuInflater = popup.menuInflater
+        inflater.inflate(R.menu.servicios_menu, popup.menu)
+
+        popup.setOnMenuItemClickListener { item ->
+            val servicio = when (item.itemId) {
+                R.id.servicio_paseador -> "Paseador de mascotas"
+                R.id.servicio_cuidador -> "Cuidador de mascotas"
+                R.id.servicio_escuela -> "Escuela de adiestramiento"
+                R.id.servicio_spa -> "Spa para mascotas"
+                else -> null
+            }
+
+            servicio?.let {
+                mostrarSeleccion(it)
+                true
+            } ?: false
+        }
+
+        popup.show()
+    }
+
+    private fun mostrarSeleccion(servicio: String) {
+        anadirservicio.text = servicio
+        Toast.makeText(this, "Seleccionaste: $servicio", Toast.LENGTH_SHORT).show()
     }
 }

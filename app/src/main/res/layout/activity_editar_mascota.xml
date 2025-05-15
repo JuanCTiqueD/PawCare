@@ -10,16 +10,17 @@
 
     <Button
         android:id="@+id/btnEliminar2"
-        android:layout_width="150dp"
-        android:layout_height="49dp"
+        android:layout_width="167dp"
+        android:layout_height="48dp"
         android:backgroundTint="#C64928"
+        android:clickable="true"
         android:text="         Eliminar "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintHorizontal_bias="0.885"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.914" />
+        app:layout_constraintTop_toBottomOf="@+id/etCondicion"
+        app:layout_constraintVertical_bias="0.682" />
 
     <ImageView
         android:id="@+id/imageView50"
@@ -34,11 +35,12 @@
         android:id="@+id/imageView38"
         android:layout_width="124dp"
         android:layout_height="128dp"
-        android:layout_marginBottom="532dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112"
         app:srcCompat="@drawable/circulo_perfil" />
 
     <ImageView
@@ -151,14 +153,11 @@
         android:id="@+id/etVacunas"
         android:layout_width="371dp"
         android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_text"
         android:hint="Vacunas"
         android:padding="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutRow2" />
 
@@ -203,7 +202,7 @@
         android:text="Cambiar Imagen"
         android:textColor="#EAFFFFFF"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnGuardar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -212,17 +211,17 @@
 
     <Button
         android:id="@+id/btnGuardar"
-        android:layout_width="200dp"
-        android:layout_height="49dp"
+        android:layout_width="167dp"
+        android:layout_height="48dp"
         android:backgroundTint="#80AA3FEC"
         android:clickable="true"
         android:text="GUARDAR DATOS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etCondicion"
-        app:layout_constraintVertical_bias="0.559" />
+        app:layout_constraintVertical_bias="0.682" />
 
     <ImageView
         android:id="@+id/imageView6"
