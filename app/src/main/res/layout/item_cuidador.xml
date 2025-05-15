@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/fondo_redondeado"
+    android:padding="12dp">
+
+    <!-- Foto de perfil -->
+    <ImageView
+        android:id="@+id/imageView32"
+        android:layout_width="74dp"
+        android:layout_height="61dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/circulo_perfil" />
+
+    <!-- Nombre -->
+    <TextView
+        android:id="@+id/tv_nombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/imageView32"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_reservar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!-- Ubicación -->
+    <TextView
+        android:id="@+id/tv_ubicacion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ubicación"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_nombre"
+        app:layout_constraintStart_toStartOf="@id/tv_nombre"
+        app:layout_constraintEnd_toEndOf="@id/tv_nombre" />
+
+    <!-- Precio -->
+    <TextView
+        android:id="@+id/tv_precio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Precio"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_ubicacion"
+        app:layout_constraintStart_toStartOf="@id/tv_ubicacion"
+        app:layout_constraintEnd_toEndOf="@id/tv_ubicacion" />
+
+    <!-- Botón reservar -->
+    <ImageView
+        android:id="@+id/btn_reservar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="Reservar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/agendar_icono" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
