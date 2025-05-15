@@ -1,5 +1,6 @@
 package com.app.pawcare
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -42,34 +43,28 @@ class PerfilDuenoActivity : AppCompatActivity() {
             insets
         }
 
-        // Inicializar vistas
         val tvNombre = findViewById<TextView>(R.id.textView35)
         val tvUbicacion = findViewById<TextView>(R.id.textView34)
         imgProfile = findViewById(R.id.imageView20)
         rvMascotas = findViewById(R.id.rvMascotas)
         tvNoMascotas = findViewById(R.id.tvNoMascotas)
 
-        // Configurar RecyclerView
         rvMascotas.layoutManager = LinearLayoutManager(this)
         mascotaAdapter = MascotaAdapter(emptyList()) { mascota ->
             val intent = Intent(this, EditarMascota_Activity::class.java)
             intent.putExtra("petId", mascota.petId)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_EDITAR_MASCOTA)
         }
         rvMascotas.adapter = mascotaAdapter
 
-        // Obtener usuario actual
         val userId = auth.currentUser?.uid ?: run {
             Toast.makeText(this, "Usuario no autenticado", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
 
-        // Cargar datos del usuario y sus mascotas
         cargarDatosUsuario(userId, tvNombre, tvUbicacion)
         cargarMascotas(userId)
-
-        // Configurar listeners de los botones
         configurarListeners()
     }
 
@@ -80,7 +75,6 @@ class PerfilDuenoActivity : AppCompatActivity() {
                     tvNombre.text = document.getString("username") ?: "Nombre no disponible"
                     tvUbicacion.text = document.getString("location") ?: "Ubicación no disponible"
 
-                    // Cargar imagen de perfil
                     document.getString("profileImage")?.takeIf { it.isNotEmpty() }?.let { url ->
                         Glide.with(this)
                             .load(url)
@@ -98,7 +92,7 @@ class PerfilDuenoActivity : AppCompatActivity() {
     }
 
     private fun cargarMascotas(userId: String) {
-        db.collection("pets") // o "pets" según tu colección
+        db.collection("pets")
             .whereEqualTo("userId", userId)
             .get()
             .addOnSuccessListener { result ->
@@ -116,8 +110,6 @@ class PerfilDuenoActivity : AppCompatActivity() {
                         profileImage = document.getString("profileImage"),
                         userId = document.getString("userId") ?: userId
                     )
-                }.also {
-                    Log.d("Mascotas", "Mascotas encontradas: ${it.size}")
                 }
 
                 if (mascotas.isEmpty()) {
@@ -138,24 +130,39 @@ class PerfilDuenoActivity : AppCompatActivity() {
     }
 
     private fun configurarListeners() {
-        // Botón para ir a Configuración
         findViewById<ImageView>(R.id.imgConfiguracion).setOnClickListener {
             startActivity(Intent(this, Configuracion::class.java))
         }
 
-        // Volver a inicio
         findViewById<ImageView>(R.id.btnhome14).setOnClickListener {
             startActivity(Intent(this, ActivityInicio::class.java))
             finish()
         }
 
-        // Agregar mascota
         findViewById<AppCompatButton>(R.id.btnAgregarm).setOnClickListener {
-            startActivity(Intent(this, SelecionarMascota_Activity::class.java))
+            val intent = Intent(this, SelecionarMascota_Activity::class.java)
+            startActivityForResult(intent, REQUEST_AGREGAR_MASCOTA)
         }
     }
 
-    // Clase de modelo de datos Mascota actualizada
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        val userId = auth.currentUser?.uid
+        if (resultCode == Activity.RESULT_OK && userId != null) {
+            when (requestCode) {
+                REQUEST_EDITAR_MASCOTA, REQUEST_AGREGAR_MASCOTA -> {
+                    cargarMascotas(userId)
+                }
+            }
+        }
+    }
+
+    companion object {
+        const val REQUEST_EDITAR_MASCOTA = 1002
+        const val REQUEST_AGREGAR_MASCOTA = 1003
+    }
+
     data class Mascota(
         val petId: String = "",
         val name: String = "",
@@ -169,15 +176,12 @@ class PerfilDuenoActivity : AppCompatActivity() {
         val profileImage: String? = null,
         val userId: String = ""
     ) {
-        // Función para calcular la edad aproximada
         fun getEdadAproximada(): Int {
             return birthDate?.let {
                 try {
                     val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                    val birthDate = sdf.parse(it)
+                    val birth = Calendar.getInstance().apply { time = sdf.parse(it) }
                     val now = Calendar.getInstance()
-                    val birth = Calendar.getInstance().apply { time = birthDate }
-
                     var edad = now.get(Calendar.YEAR) - birth.get(Calendar.YEAR)
                     if (now.get(Calendar.DAY_OF_YEAR) < birth.get(Calendar.DAY_OF_YEAR)) {
                         edad--
@@ -191,7 +195,6 @@ class PerfilDuenoActivity : AppCompatActivity() {
         }
     }
 
-    // Adaptador actualizado para el RecyclerView
     class MascotaAdapter(
         private var mascotas: List<Mascota>,
         private val onEditClick: (Mascota) -> Unit
@@ -231,11 +234,10 @@ class PerfilDuenoActivity : AppCompatActivity() {
             holder.tvRaza.text = mascota.breed
             holder.tvCuidados.text = when {
                 mascota.diseases.isNotEmpty() -> mascota.diseases.joinToString(", ")
-                mascota.allergies.isNotEmpty() -> "Alergias: ${mascota.allergies.joinToString(", ")}"
+                mascota.allergies.isNotEmpty() -> "Alergias: ${mascota.allergies.joinToString(", ")}".trim()
                 else -> "Ninguno"
             }
 
-            // Cargar imagen de la mascota
             mascota.profileImage?.takeIf { it.isNotEmpty() }?.let { url ->
                 Glide.with(holder.itemView.context)
                     .load(url)
