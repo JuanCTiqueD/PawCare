@@ -1,6 +1,7 @@
 package com.app.pawcare
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
@@ -33,7 +34,7 @@ class PerfilPerro_Activity : AppCompatActivity() {
         val etCondicion = findViewById<EditText>(R.id.etCondicion)
         val btnGuardar = findViewById<Button>(R.id.btnGuardar)
 
-        // Picker de fecha
+        // 📅 Picker de fecha
         fechaNacimiento.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -52,7 +53,7 @@ class PerfilPerro_Activity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        // Botón guardar
+        // 💾 Botón guardar
         btnGuardar.setOnClickListener {
             val userId = auth.currentUser?.uid ?: return@setOnClickListener
 
@@ -63,6 +64,7 @@ class PerfilPerro_Activity : AppCompatActivity() {
             val fechaNac = fechaNacimiento.text.toString().trim()
             val enfermedades = etCondicion.text.toString().split(",").map { it.trim() }.filter { it.isNotEmpty() }
             val alergias = etAlergias.text.toString().split(",").map { it.trim() }.filter { it.isNotEmpty() }
+            val vacunas = etVacunas.text.toString().split(",").map { it.trim() }.filter { it.isNotEmpty() }
 
             val progressDialog = mostrarProgressDialog("Guardando mascota...")
 
@@ -75,7 +77,8 @@ class PerfilPerro_Activity : AppCompatActivity() {
                 "birthDate" to fechaNac,
                 "diseases" to enfermedades,
                 "allergies" to alergias,
-                "breed" to "Desconocida", // Puedes agregar campo específico si lo necesitas
+                "vaccines" to vacunas,  // 🟢 campo agregado
+                "breed" to "Desconocida",
                 "profileImage" to "",
                 "createdAt" to FieldValue.serverTimestamp(),
                 "lastModifiedAt" to FieldValue.serverTimestamp()
@@ -99,6 +102,11 @@ class PerfilPerro_Activity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        // 🔙 Regresar a seleccionar mascota
+        findViewById<ImageView>(R.id.imageView16).setOnClickListener {
+            startActivity(Intent(this, SelecionarMascota_Activity::class.java))
         }
     }
 

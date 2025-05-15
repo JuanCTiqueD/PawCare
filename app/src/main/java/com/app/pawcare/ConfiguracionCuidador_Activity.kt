@@ -40,15 +40,15 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
             cerrarSesion()
         }
 
-        // 2. Botón de Regresar
+        // 2. Botón de Regresar a perfil cuidador
         val imageBack = findViewById<ImageView>(R.id.perrificado)
         imageBack.setOnClickListener {
-            finish() // Solo cierra esta actividad, sin reiniciar PerfilDuenoActivity
+            startActivity(Intent(this, perfilCuidadorActivity::class.java))
         }
 
-        // 3. Botón Editar Perfil (existente)
-        val editarPerfil_cuidador = findViewById<TextView>(R.id.editarperfil3)
-        editarPerfil_cuidador.setOnClickListener {
+        //3. Botón Editar Perfil (existente)
+        val editarperfil3 = findViewById<TextView>(R.id.editarperfil3)
+        editarperfil3.setOnClickListener {
             startActivity(Intent(this, EditarPerfilCuidador_Activity::class.java))
         }
 

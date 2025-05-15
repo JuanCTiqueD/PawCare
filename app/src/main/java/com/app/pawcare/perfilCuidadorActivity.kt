@@ -28,6 +28,11 @@ class perfilCuidadorActivity : AppCompatActivity() {
         btnPerrificado.setOnClickListener {
             startActivity(Intent(this, PerrificadoCuidador_Activity::class.java))
         }
+        // Boton Home cuidador activity
+        val imageBack = findViewById<ImageView>(R.id.btnhome17)
+        imageBack.setOnClickListener {
+            startActivity(Intent(this, CuidadorActivity::class.java))
+        }
 
 // Configuración
         val btn_config_cuidador = findViewById<ImageView>(R.id.imgConfiguracion)

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/img_mascota"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/circulo_perfil"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_mis_mascotas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Princesa"
+            android:textColor="#242760"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/img_mascota"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"/>
+
+        <!-- Especie -->
+        <TextView
+            android:id="@+id/tv_title11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Especie:"
+            android:textColor="#C64928"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mis_mascotas"
+            app:layout_constraintStart_toEndOf="@+id/img_mascota"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Canina"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title11"
+            app:layout_constraintStart_toEndOf="@+id/tv_title11"
+            android:layout_marginStart="8dp"/>
+
+        <!-- Edad -->
+        <TextView
+            android:id="@+id/tv_title10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edad:"
+            android:textColor="#C64928"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title11"
+            app:layout_constraintStart_toEndOf="@+id/img_mascota"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title10"
+            app:layout_constraintStart_toEndOf="@+id/tv_title10"
+            android:layout_marginStart="8dp"/>
+
+        <!-- Sexo -->
+        <TextView
+            android:id="@+id/tv_title12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sexo:"
+            android:textColor="#C64928"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title10"
+            app:layout_constraintStart_toEndOf="@+id/img_mascota"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hembra"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title12"
+            app:layout_constraintStart_toEndOf="@+id/tv_title12"
+            android:layout_marginStart="8dp"/>
+
+        <!-- Peso -->
+        <TextView
+            android:id="@+id/tv_title13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peso:"
+            android:textColor="#C64928"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title12"
+            app:layout_constraintStart_toEndOf="@+id/img_mascota"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23 kg"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title13"
+            app:layout_constraintStart_toEndOf="@+id/tv_title13"
+            android:layout_marginStart="8dp"/>
+
+        <!-- Raza -->
+        <TextView
+            android:id="@+id/tv_title14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Raza:"
+            android:textColor="#C64928"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title13"
+            app:layout_constraintStart_toEndOf="@+id/img_mascota"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pitbull"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title14"
+            app:layout_constraintStart_toEndOf="@+id/tv_title14"
+            android:layout_marginStart="8dp"/>
+
+        <!-- Cuidados especiales -->
+        <TextView
+            android:id="@+id/tv_title15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cuidados especiales:"
+            android:textColor="#C64928"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title14"
+            app:layout_constraintStart_toEndOf="@+id/img_mascota"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Displasia de cadera"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title15"
+            app:layout_constraintStart_toEndOf="@+id/img_mascota"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Botón editar -->
+        <ImageView
+            android:id="@+id/imageView52"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/editar"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:textColor="#247DCF"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView52"
+            app:layout_constraintEnd_toStartOf="@+id/imageView52"
+            app:layout_constraintTop_toTopOf="@+id/imageView52"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

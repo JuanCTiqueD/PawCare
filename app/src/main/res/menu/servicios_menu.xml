@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/servicio_paseador"
+        android:title="Paseador de mascotas" />
+    <item
+        android:id="@+id/servicio_cuidador"
+        android:title="Cuidador de mascotas" />
+    <item
+        android:id="@+id/servicio_escuela"
+        android:title="Escuela de adiestramiento" />
+    <item
+        android:id="@+id/servicio_spa"
+        android:title="Spa para mascotas" />
+</menu>
