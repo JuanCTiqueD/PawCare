@@ -8,10 +8,9 @@
     android:background="#FFFFFF"
     tools:context=".Editar_solicitud">
 
-    <?xml version="1.0" encoding="utf-8"?>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
-        style="@style/morado"
+        style=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -245,8 +244,6 @@
             tools:gravity="center" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
