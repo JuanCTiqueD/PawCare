@@ -19,5 +19,13 @@ class CuidadorActivity: AppCompatActivity() {
         btnperfil_cuidador.setOnClickListener {
             startActivity(Intent(this, perfilCuidadorActivity::class.java))
         }
+
+        val btnhuella13 =findViewById<ImageView>(R.id.btnhuella13)
+
+        btnhuella13.setOnClickListener {
+            val intent = Intent(this,HistorialSolicitudCuidador_Activity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
