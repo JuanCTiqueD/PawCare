@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.app.pawcare.databinding.ActivityHistorialSolicitudDuenoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -65,7 +66,7 @@ class ActivityInicio : AppCompatActivity() {
         }
 
         btnhuella.setOnClickListener {
-            val intent = Intent(this,HacerSolicitudActivity::class.java)
+            val intent = Intent(this,ActivityHistorialSolicitudDuenoBinding::class.java)
             startActivity(intent)
         }
 

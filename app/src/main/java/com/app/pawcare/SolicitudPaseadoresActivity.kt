@@ -2,6 +2,7 @@ package com.app.pawcare
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,16 @@ class SolicitudPaseadoresActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val btnSolicitud: Button = findViewById(R.id.btnSolicitud)
+
+        // Configurar el listener para el clic del botón
+        btnSolicitud.setOnClickListener {
+            // Crear el Intent para abrir solicitud
+            val intent = Intent(this, HacerSolicitudActivity::class.java)
+            startActivity(intent) // Iniciar la actividad
+        }
+
         // Botón de reservar (ImageView)
         val imageView2 = findViewById<ImageView>(R.id.imageView2)
         imageView2.setOnClickListener {

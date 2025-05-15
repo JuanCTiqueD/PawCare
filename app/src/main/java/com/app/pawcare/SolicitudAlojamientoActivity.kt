@@ -16,8 +16,8 @@ class SolicitudAlojamientoActivity : AppCompatActivity() {
 
         // Configurar el listener para el clic del botón
         btnSolicitud2.setOnClickListener {
-            // Crear el Intent para abrir ElegirMascotaActivity
-            val intent = Intent(this, ElegirmascotaActivity::class.java)
+            // Crear el Intent para abrir solicitud
+            val intent = Intent(this, HacerSolicitudActivity::class.java)
             startActivity(intent) // Iniciar la actividad
         }
 

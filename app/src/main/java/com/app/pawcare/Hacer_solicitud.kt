@@ -24,6 +24,8 @@ class HacerSolicitudActivity : AppCompatActivity() {
     private lateinit var etServicio: EditText
     private lateinit var btnGuardar: Button
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hacer_solicitud)

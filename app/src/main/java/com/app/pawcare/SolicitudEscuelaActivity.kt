@@ -2,6 +2,7 @@ package com.app.pawcare
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,16 @@ class SolicitudEscuelaActivity : AppCompatActivity() {
 
 
         }
+        val btnSolicitud3: Button = findViewById(R.id.btnSolicitud3)
+
+        // Configurar el listener para el clic del botón
+        btnSolicitud3.setOnClickListener {
+            // Crear el Intent para abrir solicitud
+            val intent = Intent(this, HacerSolicitudActivity::class.java)
+            startActivity(intent) // Iniciar la actividad
+        }
+
+
         // Obtener el ImageView imageView21
         val imageView21: ImageView = findViewById(R.id.imageView21)
 
