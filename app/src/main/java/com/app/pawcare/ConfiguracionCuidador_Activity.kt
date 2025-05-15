@@ -30,7 +30,6 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_configuracion_cuidador)
 
-
         // Inicializar Firebase Auth
         auth = Firebase.auth
 
@@ -46,7 +45,7 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
             startActivity(Intent(this, perfilCuidadorActivity::class.java))
         }
 
-        //3. Botón Editar Perfil (existente)
+        // 3. Botón Editar Perfil (existente)
         val editarperfil3 = findViewById<TextView>(R.id.editarperfil3)
         editarperfil3.setOnClickListener {
             startActivity(Intent(this, EditarPerfilCuidador_Activity::class.java))
@@ -56,6 +55,15 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
         val btnEliminar = findViewById<Button>(R.id.btnEliminar4)
         btnEliminar.setOnClickListener {
             mostrarDialogoConfirmacion()
+        }
+
+        // 5. Configurar botón Chat con destinatario fijo
+        val btnChat = findViewById<Button>(R.id.btnProbarChatConfig)
+        btnChat.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
+            // Enviar el id del destinatario (email en este caso)
+            intent.putExtra("destinatarioId", "alejo5@main.com")
+            startActivity(intent)
         }
     }
 
@@ -90,11 +98,9 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
     private fun solicitarReautenticacion() {
         val user = auth.currentUser ?: return
 
-        // 1. Inflar el layout personalizado del diálogo
         val dialogView = layoutInflater.inflate(R.layout.dialog_password, null)
         val etPassword = dialogView.findViewById<EditText>(R.id.et_password)
 
-        // 2. Crear y mostrar el diálogo
         AlertDialog.Builder(this)
             .setTitle("Verificación de seguridad")
             .setMessage("Por favor ingresa tu contraseña para confirmar:")
@@ -103,7 +109,6 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
                 val password = etPassword.text.toString()
                 val credential = EmailAuthProvider.getCredential(user.email!!, password)
 
-                // Reautenticar
                 user.reauthenticate(credential)
                     .addOnSuccessListener {
                         eliminarCuentaCompleta()
@@ -120,16 +125,12 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
     private fun eliminarCuentaCompleta() {
         val user = auth.currentUser ?: return
         val userId = user.uid
-        // Mostrar diálogo de progreso al usuario
         val progressDialog = mostrarProgressDialog("Eliminando cuenta...")
 
-        // 1. Primero eliminar datos de Firestore y Storage
         val deleteTasks = mutableListOf<Task<*>>()
 
-        // Añadir tarea para borrar usuario
         deleteTasks.add(db.collection("users").document(userId).delete())
 
-        // Añadir tarea para borrar mascotas
         deleteTasks.add(
             db.collection("pets")
                 .whereEqualTo("userId", userId)
@@ -143,13 +144,10 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
                 }
         )
 
-        // Añadir tarea para borrar imagen de perfil
         deleteTasks.add(storage.reference.child("profile_images/$userId.jpg").delete())
 
-        // Ejecutar todas las tareas en paralelo
         Tasks.whenAllComplete(deleteTasks)
             .addOnSuccessListener {
-                // 2. Solo después de borrar datos, eliminar la cuenta de Auth
                 user.delete()
                     .addOnSuccessListener {
                         progressDialog.dismiss()
@@ -186,6 +184,5 @@ class ConfiguracionCuidador_Activity : AppCompatActivity() {
             .create()
             .also { it.show() }
     }
-
 
 }

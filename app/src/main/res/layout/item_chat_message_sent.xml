@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:paddingStart="70dp"  android:paddingEnd="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_message_sent_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/sent_message_background"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_max="wrap"
+        app:layout_constrainedWidth="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:id="@+id/ivMessageImageSent"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:visibility="gone"
+                tools:srcCompat="@drawable/ic_placeholder_image"
+                android:contentDescription="@string/chat_image_sent_description"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tvMessageTextSent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/chat_placeholder_message"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvMessageTimestampSent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="4dp"
+                tools:text="@string/chat_placeholder_timestamp"
+                android:textColor="@color/timestamp_text_color"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
