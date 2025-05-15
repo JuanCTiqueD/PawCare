@@ -1,22 +1,21 @@
 package com.app.pawcare
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AlojamientoActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
-
-    private lateinit var nombreTextView: TextView
-    private lateinit var ubicacionTextView: TextView
-    private lateinit var precioTextView: TextView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: CuidadoresAdapter
+    private val listaCuidadores = mutableListOf<Cuidador>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,20 +27,13 @@ class AlojamientoActivity : AppCompatActivity() {
             insets
         }
 
-        // Inicializar vistas
-        nombreTextView = findViewById(R.id.textView18)
-        ubicacionTextView = findViewById(R.id.textView19)
-        precioTextView = findViewById(R.id.textView24)
+        recyclerView = findViewById(R.id.recyclerCuidadores)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = CuidadoresAdapter(listaCuidadores)
+        recyclerView.adapter = adapter
 
-        // Botón regresar
         findViewById<ImageView>(R.id.btn_regresar3).setOnClickListener {
-            startActivity(Intent(this, ActivityInicio::class.java))
-            finish()
-        }
-
-        // Botón reservar
-        findViewById<ImageView>(R.id.btn_reservar).setOnClickListener {
-            startActivity(Intent(this, SolicitudAlojamientoActivity::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
 
         cargarCuidadoresConAlojamiento()
@@ -57,22 +49,51 @@ class AlojamientoActivity : AppCompatActivity() {
                     return@addOnSuccessListener
                 }
 
-                val primerCuidador = documentos.first()
-                val userId = primerCuidador.id
-                val precio = primerCuidador.getDouble("hourlyRate") ?: 0.0
+                listaCuidadores.clear()
 
-                db.collection("users").document(userId).get()
-                    .addOnSuccessListener { userDoc ->
-                        val nombre = userDoc.getString("username") ?: "Sin nombre"
-                        val ubicacion = userDoc.getString("location") ?: "Sin ubicación"
+                for (doc in documentos) {
+                    val userId = doc.id
+                    val precio = doc.getDouble("hourlyRate") ?: 0.0
 
-                        nombreTextView.text = nombre
-                        ubicacionTextView.text = ubicacion
-                        precioTextView.text = "Precio: $${precio.toInt()} / hora"
-                    }
+                    db.collection("users").document(userId).get()
+                        .addOnSuccessListener { userDoc ->
+                            val nombre = userDoc.getString("username") ?: "Sin nombre"
+                            val ubicacion = userDoc.getString("location") ?: "Sin ubicación"
+
+                            listaCuidadores.add(Cuidador(nombre, ubicacion, "Precio: $${precio.toInt()} / hora"))
+                            adapter.notifyItemInserted(listaCuidadores.size - 1)
+                        }
+                }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Error al cargar cuidadores", Toast.LENGTH_SHORT).show()
             }
     }
+}
+
+// Clase de datos para el cuidador
+data class Cuidador(val nombre: String, val ubicacion: String, val precio: String)
+
+// Adaptador para el RecyclerView
+class CuidadoresAdapter(private val cuidadores: List<Cuidador>) : RecyclerView.Adapter<CuidadoresAdapter.ViewHolder>() {
+
+    inner class ViewHolder(itemView: android.view.View) : RecyclerView.ViewHolder(itemView) {
+        val nombre = itemView.findViewById<android.widget.TextView>(R.id.tv_nombre)
+        val ubicacion = itemView.findViewById<android.widget.TextView>(R.id.tv_ubicacion)
+        val precio = itemView.findViewById<android.widget.TextView>(R.id.tv_precio)
+    }
+
+    override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): ViewHolder {
+        val view = android.view.LayoutInflater.from(parent.context).inflate(R.layout.item_cuidador, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val cuidador = cuidadores[position]
+        holder.nombre.text = cuidador.nombre
+        holder.ubicacion.text = cuidador.ubicacion
+        holder.precio.text = cuidador.precio
+    }
+
+    override fun getItemCount(): Int = cuidadores.size
 }
