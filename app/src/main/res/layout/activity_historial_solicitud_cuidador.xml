@@ -22,26 +22,161 @@
         app:srcCompat="?attr/homeAsUpIndicator" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="340dp"
-        android:layout_height="305dp"
-        android:layout_margin="16dp"
-        app:cardBackgroundColor="@android:color/white"
+        android:id="@+id/cardView3"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="234dp"
+        android:layout_marginEnd="16dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="6dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnhuella10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView27"
-        app:layout_constraintVertical_bias="0.124">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView51"
-            android:layout_width="327dp"
-            android:layout_height="279dp"
-            app:srcCompat="@drawable/solicitud1" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="266dp"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/img_usuario"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/circulo_perfil"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:text="Sofía Jiménez"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/img_usuario"
+                app:layout_constraintTop_toTopOf="@id/img_usuario" />
+
+            <TextView
+                android:id="@+id/tv_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Alojamiento"
+                android:textColor="#C64928"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/img_usuario"
+                app:layout_constraintTop_toBottomOf="@id/img_usuario" />
+
+            <!-- Datos de la mascota -->
+            <TextView
+                android:id="@+id/tv_mascota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Mascota: Princesa"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_titulo" />
+
+            <TextView
+                android:id="@+id/tv_fecha_inicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Fecha de inicio: 18/03/2025"
+                android:textColor="#C64928"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_mascota" />
+
+            <TextView
+                android:id="@+id/tv_fecha_fin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Fecha de finalización: 20/03/2025"
+                android:textColor="#C64928"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_fecha_inicio" />
+
+            <TextView
+                android:id="@+id/tv_hora_inicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Hora de inicio: 8:00 am"
+                android:textColor="#C64928"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_fecha_fin" />
+
+            <TextView
+                android:id="@+id/tv_hora_fin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Hora de finalización: 9:00 pm"
+                android:textColor="#C64928"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_hora_inicio" />
+
+            <TextView
+                android:id="@+id/tv_ubi_inicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Ubicación: Carrera 20a#1-20"
+                android:textColor="#C64928"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_hora_fin" />
+
+            <ImageView
+                android:id="@+id/icon_casa"
+                android:layout_width="95dp"
+                android:layout_height="102dp"
+                android:src="@drawable/alojamiento_icono"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_usuario"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView62"
+                android:layout_width="36dp"
+                android:layout_height="43dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView33"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_ubi_inicio"
+                app:layout_constraintTop_toBottomOf="@+id/icon_casa"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/editar" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="88dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="4dp"
+                android:text="Editar"
+                android:textColor="#247DCF"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/icon_casa"
+                app:layout_constraintVertical_bias="0.9" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
     <ImageView
@@ -108,11 +243,12 @@
         android:id="@+id/btnSolicitud5"
         android:layout_width="142dp"
         android:layout_height="49dp"
+        android:layout_marginBottom="64dp"
         android:backgroundTint="#6FAA3FEC"
         android:text="ACEPTAR"
         app:layout_constraintBottom_toTopOf="@+id/btnhome13"
         app:layout_constraintEnd_toStartOf="@+id/btnAgregarm"
-        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.219" />
@@ -121,13 +257,12 @@
         android:id="@+id/btnAgregarm"
         android:layout_width="142dp"
         android:layout_height="49dp"
+        android:layout_marginBottom="64dp"
         android:backgroundTint="#C64928"
         android:text="RECHAZAR"
         app:layout_constraintBottom_toTopOf="@+id/btnperfil13"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
