@@ -113,32 +113,18 @@
         app:layout_constraintTop_toBottomOf="@id/etHoraInicio" />
 
     <EditText
-        android:id="@+id/etUbicacion"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/rounded_text"
-        android:hint="Ubicación"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etHoraFinal" />
-
-    <EditText
         android:id="@+id/etServicio"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/rounded_text"
         android:hint="Servicio"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etUbicacion" />
+        tools:layout_editor_absoluteY="414dp" />
 
     <Button
         android:id="@+id/btnGuardar"

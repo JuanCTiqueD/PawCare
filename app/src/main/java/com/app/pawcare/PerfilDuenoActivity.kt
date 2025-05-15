@@ -2,6 +2,9 @@ package com.app.pawcare
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +16,8 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +37,9 @@ class PerfilDuenoActivity : AppCompatActivity() {
     private lateinit var tvNoMascotas: TextView
     private lateinit var imgProfile: ImageView
 
+    private val REQUEST_CODE_IMAGE_PICK = 3001
+    private val REQUEST_CODE_PERMISSION = 3002
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -45,7 +53,7 @@ class PerfilDuenoActivity : AppCompatActivity() {
 
         val tvNombre = findViewById<TextView>(R.id.textView35)
         val tvUbicacion = findViewById<TextView>(R.id.textView34)
-        imgProfile = findViewById(R.id.imageView20)
+        imgProfile = findViewById(R.id.perfil)
         rvMascotas = findViewById(R.id.rvMascotas)
         tvNoMascotas = findViewById(R.id.tvNoMascotas)
 
@@ -66,6 +74,76 @@ class PerfilDuenoActivity : AppCompatActivity() {
         cargarDatosUsuario(userId, tvNombre, tvUbicacion)
         cargarMascotas(userId)
         configurarListeners()
+
+        // Nuevo: listener para cambiar la imagen de perfil
+        imgProfile.setOnClickListener {
+            checkPermissionAndOpenGallery()
+        }
+    }
+
+    private fun checkPermissionAndOpenGallery() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_MEDIA_IMAGES)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES),
+                    REQUEST_CODE_PERMISSION
+                )
+            } else {
+                openGallery()
+            }
+        } else {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                    REQUEST_CODE_PERMISSION
+                )
+            } else {
+                openGallery()
+            }
+        }
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK).apply {
+            type = "image/*"
+        }
+        startActivityForResult(intent, REQUEST_CODE_IMAGE_PICK)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        val userId = auth.currentUser?.uid
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_EDITAR_MASCOTA, REQUEST_AGREGAR_MASCOTA -> {
+                    if (userId != null) cargarMascotas(userId)
+                }
+                REQUEST_CODE_IMAGE_PICK -> {
+                    val selectedImageUri: Uri? = data?.data
+                    selectedImageUri?.let {
+                        imgProfile.setImageURI(it)
+                        // Aquí podrías subir la imagen a Firebase Storage y guardar la URL si quieres persistirla
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSION && grantResults.isNotEmpty() &&
+            grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            openGallery()
+        }
     }
 
     private fun cargarDatosUsuario(userId: String, tvNombre: TextView, tvUbicacion: TextView) {
@@ -142,19 +220,6 @@ class PerfilDuenoActivity : AppCompatActivity() {
         findViewById<AppCompatButton>(R.id.btnAgregarm).setOnClickListener {
             val intent = Intent(this, SelecionarMascota_Activity::class.java)
             startActivityForResult(intent, REQUEST_AGREGAR_MASCOTA)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        val userId = auth.currentUser?.uid
-        if (resultCode == Activity.RESULT_OK && userId != null) {
-            when (requestCode) {
-                REQUEST_EDITAR_MASCOTA, REQUEST_AGREGAR_MASCOTA -> {
-                    cargarMascotas(userId)
-                }
-            }
         }
     }
 
